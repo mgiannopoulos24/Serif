@@ -1,0 +1,20 @@
+/*!
+ * Theme Name: Serif
+ *
+ * This file is compiled to assets/css/style.min.css.
+ * Do not edit the compiled file directly — edit the SCSS partials instead.
+ */
+
+// Abstracts
+@use 'abstracts/variables';
+
+// Base
+@use 'base/reset';
+@use 'base/typography';
+
+// Layout
+// @use 'layout/header';
+
+// Components
+// @use 'components/buttons' as *;
+// @use 'components/navigation' as *;

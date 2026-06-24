@@ -1,0 +1,33 @@
+{
+    "name": "mgiannopoulos24/serif",
+    "description": "A minimalist, typography-first FSE (Full Site Editing) theme tailored for writers, journalists, and designers.",
+    "keywords": [
+        "minimal",
+        "journalism",
+        "writing",
+        "design",
+        "fse"
+    ],
+    "version": "1.0.0",
+    "type": "wordpress-theme",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Marios Giannopoulos",
+            "email": "mariosgian_2002@yahoo.gr",
+            "homepage": "https://github.com/mgiannopoulos24"
+        }
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.13.4",
+        "wp-coding-standards/wpcs": "^3.0",
+        "phpcompatibility/php-compatibility": "^9.3"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

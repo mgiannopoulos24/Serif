@@ -1,0 +1,40 @@
+{
+	"name": "serif",
+	"description": "A minimalist, typography-first FSE (Full Site Editing) theme tailored for writers, journalists, and designers.",
+	"keywords": [
+        "minimal",
+        "journalism",
+        "writing",
+        "design",
+        "fse"
+    ],
+	"version": "1.0.0",
+	"scripts": {
+		"start": "wp-env start",
+		"stop": "wp-env stop",
+		"destroy": "wp-env destroy",
+		"shell": "wp-env run cli /bin/bash",
+		"lint:php": "vendor/bin/phpcs --standard=phpcs.xml .",
+		"lint:php:fix": "vendor/bin/phpcbf --standard=phpcs.xml .",
+		"lint:js": "eslint .",
+		"test:php": "vendor/bin/phpunit",
+		"test:e2e:install": "bunx playwright install chromium",
+		"test:e2e": "bunx playwright test --config tests/e2e-pw/playwright.config.ts",
+		"test:a11y": "bunx playwright test --config tests/e2e-pw/playwright.config.ts tests/accessibility/",
+		"build:css": "sass assets/scss/style.scss assets/css/style.min.css --style compressed --no-source-map",
+        "build:js": "esbuild assets/js",
+		"makepot": "wp-env run cli --env-cwd=/var/www/html/wp-content/themes/Serif wp i18n make-pot . languages/serif.pot --ignore-domain",
+		"update-po": "wp-env run cli --env-cwd=/var/www/html/wp-content/themes/Serif wp i18n update-po languages/serif.pot languages/",
+		"makemo": "wp-env run cli --env-cwd=/var/www/html/wp-content/themes/Serif wp i18n make-mo languages/",
+		"bundle": "mkdir -p build && bestzip build/serif.zip assets/css/ inc/ functions.php style.css screenshot.png"
+	},
+	"devDependencies": {
+		"@axe-core/playwright": "^4.12.1",
+		"@playwright/test": "^1.61.0",
+		"@wordpress/env": "^11.8.1",
+		"bestzip": "^3.0.1",
+		"esbuild": "^0.28.1",
+		"eslint": "^10.5.0",
+		"sass": "^1.101.0"
+	}
+}

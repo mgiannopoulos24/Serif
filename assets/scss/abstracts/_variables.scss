@@ -1,0 +1,25 @@
+// Globals
+:root {
+    --serif-font-heading: 'IBM Plex Sans', sans;
+    --serif-font-body: 'IBM Plex Serif', serif;
+
+    --serif-bg: #FAF8F5;
+    --serif-text: #1C1B1A;
+    --serif-heading: #1A1817;
+    --serif-accent: #8B3A2A;
+    --serif-meta: #6B6763;
+    --serif-border: #E5E0D9;
+    --serif-selection: #E8D9CC;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --serif-bg: #1A1A1A;
+        --serif-text: #E0DDD7;
+        --serif-heading: #F0EDE8;
+        --serif-accent: #D4785C;
+        --serif-meta: #9C9893;
+        --serif-border: #33302C;
+        --serif-selection: #4A3F35;
+    }
+}
