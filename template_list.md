@@ -4,6 +4,49 @@ FSE block theme using `.html` files with block markup. No PHP templates.
 
 ---
 
+## A Walk Through the Site
+
+You land on **front-page.html** — a full-bleed cover image with the site title, a
+"Featured" section showing three latest posts, and a newsletter CTA. For a
+minimalist who just wants a clean blog landing, **home.html** skips the hero and
+goes straight into a paginated post grid.
+
+Click a post title and you're on **single.html**: the featured image splashed
+across the top as a cover background, the title overlaid on it, then the full
+article body below. Tags, share buttons, and prev/next links sit at the bottom.
+Below that, an author card, a row of related posts, and finally the comment
+thread. If you're on a static page like About or Contact, **page.html** strips
+it down — just title, featured image, and content.
+
+Browsing a category or tag sends you to **archive.html**: a heading showing
+"Category: Design" or "Tag: Typography", an optional description, then a post
+list matching the archive.
+
+Hit **search.html** and you get a search bar at the top, then results below. If
+nothing matches, a friendly "No results found" message appears with the search
+bar again so you can retry.
+
+Typo a URL? **404.html** shows a centered "Page Not Found" heading, another
+search bar, and a grid of recent articles to reclaim the lost visitor.
+
+Need a full-canvas landing page with no chrome? **blank.html** gives you just
+the post content — no header, no footer, nothing else. Perfect for custom page
+builders.
+
+If nothing else matches, **index.html** catches everything as a last resort with
+a simple title, featured image, and content layout.
+
+**Behind every page:** The **header** carries the site logo, title, and
+navigation (which collapses into a slide-in **off-canvas** panel on mobile). The
+**footer** has three widget columns, copyright, and social links. On single
+posts, **post-meta** shows the author avatar, name, date, categories, and
+reading time. The **entry-header** wraps the title and meta inside the featured
+image cover. The **entry-footer** handles tags, sharing, and post navigation.
+And **comments** renders the threaded discussion with the reply form at the
+bottom.
+
+---
+
 ## File Tree
 
 ```
