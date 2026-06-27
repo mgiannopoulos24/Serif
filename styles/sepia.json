@@ -1,0 +1,71 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Sepia",
+	"styles": {
+		"color": {
+			"background": "#fbf7f0",
+			"text": "#5c4033"
+		},
+		"elements": {
+			"link": {
+				"color": {
+					"text": "#8b4513"
+				},
+				":hover": {
+					"color": {
+						"text": "#3d2b1f"
+					}
+				}
+			},
+			"heading": {
+				"color": {
+					"text": "#3d2b1f"
+				}
+			},
+			"button": {
+				"color": {
+					"background": "#8b4513",
+					"text": "#fbf7f0"
+				}
+			},
+			"caption": {
+				"color": {
+					"text": "#8a7b6b"
+				}
+			}
+		},
+		"blocks": {
+			"core/quote": {
+				"color": {
+					"text": "#3d2b1f",
+					"background": "#f5eed9"
+				},
+				"border": {
+					"left": {
+						"color": "#8b4513"
+					}
+				}
+			},
+			"core/pullquote": {
+				"color": {
+					"text": "#3d2b1f",
+					"background": "#f5eed9"
+				},
+				"border": {
+					"top": {
+						"color": "#8b4513"
+					},
+					"bottom": {
+						"color": "#8b4513"
+					}
+				}
+			},
+			"core/separator": {
+				"border": {
+					"color": "#d4c5b5"
+				}
+			}
+		}
+	}
+}

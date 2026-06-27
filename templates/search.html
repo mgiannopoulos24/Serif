@@ -1,0 +1,19 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
+	<!-- wp:search {"label":"Search","showLabel":false,"placeholder":"Search...","buttonText":"Search"} /-->
+	<!-- wp:query-title {"type":"search"} /-->
+	<!-- wp:query {"query":{"inherit":true}} -->
+		<!-- wp:post-template -->
+			<!-- wp:post-title {"isLink":true} /-->
+			<!-- wp:post-excerpt /-->
+		<!-- /wp:post-template -->
+		<!-- wp:query-no-results -->
+			<!-- wp:paragraph --><p>No results found. Try a different search term.</p><!-- /wp:paragraph -->
+			<!-- wp:search /-->
+		<!-- /wp:query-no-results -->
+		<!-- wp:query-pagination /-->
+	<!-- /wp:query -->
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

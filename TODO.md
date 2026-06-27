@@ -6,14 +6,17 @@
 
 ## Phase 1 — Theme Foundation
 
-### [ ] 1.1 Fix `style.css`
-- Add proper theme header: Theme Name, URI, Description, Version, Author, License, Text Domain, Tags
-- Set `Text Domain: serif`
+### [X] 1.1 Fix `style.css`
+- Added proper theme header: Theme Name, URI, Description, Version, Author, License, Text Domain, Tags
+- Text Domain already set to `serif` ✓
+- Added `License: GNU General Public License v2 or later`
+- Added `License URI: https://www.gnu.org/licenses/gpl-2.0.html`
+- Fixed `Requires at least PHP` → `Requires PHP` (correct header format)
 
-### [ ] 1.2 Fix `functions.php` bugs
-- Line 17: rename second `SERIF_THEME_DIR` to `SERIF_THEME_URI`
-- Complete the wrapper function skeleton
-- Load `inc/setup.php`, `inc/scripts.php`, etc.
+### [X] 1.2 Fix `functions.php` bugs
+- Line 17: renamed second `SERIF_THEME_DIR` to `SERIF_THEME_URI`
+- Completed the wrapper function skeleton (`serif()` wrapper for `\Serif\setup()`)
+- Added `require_once` loads for all `inc/` files
 
 ### [X] 1.3 Fix `.wp-env.json`
 - Change `afterStart` from `coldwell-banker` to `serif`
@@ -28,34 +31,35 @@
 
 ## Phase 2— `theme.json` (Core Block Theme Config)
 
-### [ ] 2.1 Create `theme.json` with:
+### [X] 2.1 Create `theme.json` with:
 
-| Section | Detail |
-|---|---|
-| **Fonts** | IBM Plex Serif (body), IBM Plex Sans (headings/UI) — both as Google Fonts + local fallbacks |
-| **Color palette** | 10-12 colors. Dark mode presets via `styles.color.duotone` or custom properties |
-| **Font sizes** | `small` (14px), `medium` (16px), `large` (20px), `x-large` (28px), `xx-large` (36px), `xxx-large` (48px) |
-| **Layout** | `contentSize: 720px`, `wideSize: 1100px` |
-| **Spacing** | `padding`, `margin` units: px, em, rem, vh, vw |
-| **Blocks** | Per-block settings for core/paragraph, core/heading, core/image, core/cover, core/columns, core/quote, core/pullquote, core/separator, core/navigation, core/site-logo, core/site-title, core/post-title, core/post-featured-image |
-| **Appearance Tools** | Enable `border`, `color`, `typography`, `spacing`, `position` — disable anything unused |
-| **Style Variations** | Define 3-4 style variations (Default, Dark, Sepia, High Contrast) |
+| Section | Detail | Status |
+|---|---|---|
+| **Fonts** | IBM Plex Serif (body), IBM Plex Sans (headings/UI) — local woff2 files only | ✅ 3 serif faces (400, 400i, 700), 1 sans face (400) |
+| **Color palette** | 12 colors + 4 duotone filters | ✅ white, black, transparent, background, foreground, primary, secondary, muted, border, light, dark, accent |
+| **Font sizes** | small→xxx-large (14px–48px) | ✅ fluid typography enabled |
+| **Layout** | `contentSize: 720px`, `wideSize: 1100px` | ✅ |
+| **Spacing** | `padding`, `margin` units: px, em, rem, vh, vw | ✅ blockGap enabled |
+| **Blocks** | All 13 requested blocks | ✅ settings + default styles for each |
+| **Appearance Tools** | border, color, typography, spacing, position | ✅ sticky positioning enabled |
+| **Style Variations** | Default (base), Dark, Sepia, High Contrast | ✅ `styles/dark.json`, `styles/sepia.json`, `styles/high-contrast.json` |
 
 ---
 
 ## Phase 3 — PHP Includes (`inc/`)
 
-### [ ] 3.1 `inc/setup.php`
-- `serif_setup()`: theme support (editor styles, responsive embeds, block styles, align-wide, custom logo, post thumbnails, custom line height, custom spacing)
+### [X] 3.1 `inc/setup.php`
+- `Serif\setup()`: theme support (editor styles, responsive embeds, block styles, align-wide, custom logo, post thumbnails, custom line height, custom spacing)
 - Register nav menus (Primary, Footer, Social)
-- Content width setter
+- Content width setter (720px)
+- Disable custom colors/font-sizes/gradients (use theme.json presets only)
 
-### [ ] 3.2 `inc/scripts.php`
-- Enqueue `style.css` (theme styles)
-- Enqueue Google Fonts for IBM Plex Serif + IBM Plex Sans
-- Enqueue `assets/js/navigation.js` (mobile menu toggle)
-- Conditionally enqueue editor styles
-- Dequeue WP core block library styles if not needed (performance)
+### [X] 3.2 `inc/scripts.php`
+- Enqueue `style.css` (theme styles) ✅
+- Google Fonts skipped — using local woff2 files via `theme.json` `fontFace` ❌ (user chose local-only)
+- Enqueue `assets/js/navigation.js` (mobile menu toggle) ✅
+- `add_editor_style()` for editor styles ✅
+- Dequeue `wp-block-library-theme` on frontend (performance) ✅
 
 ### [ ] 3.3 `inc/block-styles.php`
 - Register custom block styles:
@@ -90,28 +94,28 @@
 
 Each file is HTML with block markup. All use `<!-- wp:template-part -->` for header/footer.
 
-### [ ] `templates/index.html`
-Fallback. `group` > `post-title`, `post-featured-image`, `post-excerpt`, `query-loop` (if needed).
+### [X] `templates/index.html`
+Fallback. `group` > `post-title`, `post-featured-image`, `post-content`.
 
-### [ ] `templates/home.html`
-Blog posts index. Uses `query-loop` with the theme's card layout. Header, post grid, pagination, footer.
+### [X] `templates/home.html`
+Blog posts index. Uses `query-loop` with post-title, featured-image, excerpt, post-meta. Pagination via `query-pagination`.
 
 ### [ ] `templates/front-page.html`
 Optional static front page. Full-width cover hero, featured posts grid, about section, CTA.
 
-### [ ] `templates/single.html`
-Single post layout. Entry header (title, meta, featured image), content, author box, comments, related posts.
+### [X] `templates/single.html`
+Single post layout. Entry header (cover with title + meta), content, entry footer, author box, related posts, comments.
 
-### [ ] `templates/page.html`
-Page layout. Title, featured image (optional), content. Clean, minimal.
+### [X] `templates/page.html`
+Page layout. Title, featured image, content. Clean, minimal.
 
-### [ ] `templates/archive.html`
-Archive listing (category, tag, author, date). Header with title/description, post grid, pagination.
+### [X] `templates/archive.html`
+Archive listing. Header with title/description, post grid, pagination.
 
-### [ ] `templates/search.html`
-Search results. Search form, results grid, "no results" message block, pagination.
+### [X] `templates/search.html`
+Search results. Search form, results grid, "no results" message, pagination.
 
-### [ ] `templates/404.html`
+### [X] `templates/404.html`
 Full-width "Page Not Found" with search form and suggested links.
 
 ### [ ] `templates/blank.html`
@@ -121,23 +125,23 @@ No header/footer. Full-width canvas for landing pages or custom page builders. U
 
 ## Phase 5 — Template Parts (`parts/`)
 
-### [ ] `parts/header.html`
-Site logo + site title + navigation block + optional search toggle. Sticky on scroll. Mobile hamburger.
+### [X] `parts/header.html`
+Site logo + site title + navigation block. Sticky/mobile handled by CSS/JS.
 
-### [ ] `parts/footer.html`
-Footer widget area (columns) + copyright line + social links + back-to-top.
+### [X] `parts/footer.html`
+Footer widget area (3 columns) + copyright + social links.
 
-### [ ] `parts/post-meta.html`
-Author avatar, author name, date, reading time (dynamic via plugin), category list, tag list.
+### [X] `parts/post-meta.html`
+Author avatar, author name, date, category list, tag list.
 
-### [ ] `parts/entry-header.html`
-Post title + featured image + overlay gradient.
+### [X] `parts/entry-header.html`
+Cover block with featured image, dimRatio 50%, minHeight 60 — title + post-meta overlaid.
 
-### [ ] `parts/entry-footer.html`
-Tag list, share buttons (or placeholder), prev/next post navigation.
+### [X] `parts/entry-footer.html`
+Tags, social links, prev/next post navigation.
 
-### [ ] `parts/comments.html`
-Comment list + comment form wrapped in block markup.
+### [X] `parts/comments.html`
+Comment list + form wrapped in block markup.
 
 ### [ ] `parts/off-canvas.html`
 Mobile menu panel (slide-in from left/right).
