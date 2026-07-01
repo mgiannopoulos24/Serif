@@ -3,10 +3,6 @@
 	"version": 3,
 	"settings": {
 		"appearanceTools": true,
-		"useRootPaddingAwareAlignments": true,
-		"position": {
-			"sticky": true
-		},
 		"color": {
 			"palette": [
 				{
@@ -176,8 +172,8 @@
 			"blockGap": true
 		},
 		"layout": {
-			"contentSize": "720px",
-			"wideSize": "1100px"
+			"contentSize": "900px",
+			"wideSize": "1280px"
 		},
 		"border": {
 			"color": true,
@@ -502,8 +498,8 @@
 		},
 		"spacing": {
 			"padding": {
-				"left": "24px",
-				"right": "24px",
+				"left": "20px",
+				"right": "20px",
 				"top": "0",
 				"bottom": "0"
 			}
