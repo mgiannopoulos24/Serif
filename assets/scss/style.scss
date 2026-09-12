@@ -1,8 +1,9 @@
 /*!
  * Theme Name: Serif
  *
- * This file is compiled to assets/css/style.min.css.
- * Do not edit the compiled file directly — edit the SCSS partials instead.
+ * Compiled to assets/css/style.min.css — edit the SCSS partials, not the output.
+ * Design tokens (colours, fonts, sizes, spacing, layout) live in theme.json;
+ * this stylesheet only holds what theme.json cannot express.
  */
 
 // Abstracts
@@ -11,10 +12,16 @@
 // Base
 @use 'base/reset';
 @use 'base/typography';
+@use 'base/accessibility';
 
 // Layout
-// @use 'layout/header';
+@use 'layout/header';
+@use 'layout/entry';
+
+// Blocks
+@use 'blocks/paragraph';
+@use 'blocks/table';
 
 // Components
-// @use 'components/buttons' as *;
-// @use 'components/navigation' as *;
+@use 'components/search';
+@use 'components/breadcrumbs';

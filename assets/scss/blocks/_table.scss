@@ -1,0 +1,51 @@
+// Table: core sets `border: 1px solid` (currentColor) on cells with higher
+// specificity than theme.json output, so the hairline colour lives here.
+
+.wp-block-table {
+	table {
+		border-collapse: collapse;
+	}
+
+	td,
+	th {
+		padding: 10px 12px;
+		border: 1px solid var(--wp--preset--color--border);
+		vertical-align: top;
+	}
+
+	thead {
+		border-bottom: 0;
+	}
+
+	thead th {
+		border-bottom: 2px solid var(--wp--preset--color--foreground);
+		font-family: var(--wp--preset--font-family--ibm-plex-sans);
+		font-weight: 600;
+	}
+
+	tfoot {
+		border-top: 0;
+	}
+
+	tfoot td {
+		border-top: 2px solid var(--wp--preset--color--foreground);
+	}
+
+	figcaption {
+		margin-top: 8px;
+	}
+
+	// Striped style: paper-toned stripes instead of core's grey.
+	&.is-style-stripes {
+		border-bottom: 0;
+
+		tbody tr:nth-child(odd) {
+			background-color: var(--wp--preset--color--light);
+		}
+
+		td,
+		th {
+			border-color: var(--wp--preset--color--border);
+		}
+	}
+}

@@ -1,0 +1,16 @@
+Serif — Changelog
+=================
+
+1.0.0 — 2026-09-12
+------------------
+* Initial release.
+* Templates: front page (hero from the page's featured image, featured posts, newsletter CTA), journal/home, single, page, archive, search, 404, index, blank.
+* Template parts: header (logo, title, navigation with mobile overlay, search), footer, post meta, entry header (cover), entry footer, comments.
+* Patterns: header, footer, hero cover, article grid, author box, related posts, featured quote, newsletter signup, table of contents, 404 message, no-results, search form.
+* Block styles: quote (large, pull quote), separator (narrow, thick), cover (gradient, dark overlay), image (shadow, frame).
+* Style variations: Dark, Sepia, High Contrast — all palettes WCAG 2.2 AA.
+* Search overlay (native dialog; header icon or "/" key).
+* Yoast SEO / Rank Math breadcrumbs auto-placed above post and page titles, styled by the theme.
+* Self-hosted IBM Plex Serif/Sans (rem type scale, fluid), Material Design Icons Light.
+* Translation-ready; Greek translation included.
+* Playwright + axe-core test suite covering every template, both viewports and every style variation.

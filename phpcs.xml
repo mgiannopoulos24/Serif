@@ -8,6 +8,7 @@
 	<exclude-pattern>*/vendor/*</exclude-pattern>
 	<exclude-pattern>*/tests/*</exclude-pattern>
 	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/plugins/*</exclude-pattern>
 
     <!-- Only check PHP files. -->
 	<arg name="extensions" value="php" />
@@ -22,8 +23,8 @@
 	<arg name="parallel" value="8"/>
 
 	<!-- Configs -->
-	<config name="minimum_supported_wp_version" value="6.5" />
-	<config name="testVersion" value="8.2-" />
+	<config name="minimum_supported_wp_version" value="6.6" />
+	<config name="testVersion" value="8.1-" />
 
     <!-- Rules -->
 	<rule ref="WordPress" />
@@ -38,6 +39,7 @@
 	<rule ref="Generic.Commenting.Todo"/>
 
 	<rule ref="PHPCompatibility"/>
+
 
 	<!-- Text Domain -->
 	<rule ref="WordPress.WP.I18n">

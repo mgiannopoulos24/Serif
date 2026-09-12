@@ -1,0 +1,75 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: PHP coding standards
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          coverage: none
+          tools: composer, cs2pr
+      - run: composer install --no-interaction --prefer-dist
+      - run: vendor/bin/phpcs --standard=phpcs.xml --report=checkstyle . | cs2pr
+      - name: PHP syntax (8.1 floor)
+        run: find . -name '*.php' -not -path './vendor/*' -not -path './node_modules/*' -not -path './plugins/*' -print0 | xargs -0 -n1 php -l > /dev/null
+
+  build:
+    name: Compiled assets are up to date
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+      - name: Fail if assets/css or assets/js differ from the commit
+        run: |
+          git diff --exit-code -- assets/css assets/js || {
+            echo "::error::Compiled assets are stale. Run 'bun run build' and commit the result."
+            exit 1
+          }
+
+  e2e:
+    name: Playwright + axe (wp-env)
+    runs-on: ubuntu-latest
+    needs: [ lint, build ]
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: bun install --frozen-lockfile
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('bun.lock') }}
+      - run: bunx playwright install --with-deps chromium
+      - name: Start WordPress (wp-env) and seed content
+        run: bun run start
+      - name: Skip Rank Math's setup gate so its front end renders
+        run: bun run wp-env run cli wp option update rank_math_registration_skip 1
+      - run: bun run test:e2e
+      - name: Upload Playwright report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: tests/e2e-pw/playwright-report
+          retention-days: 7
+      - name: Show WordPress debug.log
+        if: failure()
+        run: bun run wp-env run cli sh -c 'cat wp-content/debug.log 2>/dev/null || echo "no debug.log"'

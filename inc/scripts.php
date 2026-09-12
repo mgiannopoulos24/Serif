@@ -8,42 +8,59 @@
 namespace Serif;
 
 /**
- * Enqueue theme scripts and styles.
+ * Enqueue the compiled theme stylesheet and script.
+ *
+ * The style.css file holds only the theme header; the real CSS is compiled from
+ * assets/scss/ into assets/css/style.min.css.
  */
-function enqueue_scripts() {
-	$theme_version = wp_get_theme()->get( 'Version' );
+function enqueue_assets() {
+	$file = '/assets/css/style.min.css';
 
-	// Theme stylesheet.
 	wp_enqueue_style(
 		'serif-style',
-		get_template_directory_uri() . '/style.css',
+		get_template_directory_uri() . $file,
 		array(),
-		$theme_version
+		SERIF_VERSION . '.' . (int) filemtime( SERIF_THEME_DIR . $file )
 	);
 
-	// Navigation script.
-	wp_enqueue_script(
-		'serif-navigation',
-		get_template_directory_uri() . '/assets/js/navigation.js',
-		array(),
-		$theme_version,
-		true
-	);
+	$script = '/assets/js/theme.min.js';
+	if ( file_exists( SERIF_THEME_DIR . $script ) ) {
+		wp_enqueue_script(
+			'serif-theme',
+			get_template_directory_uri() . $script,
+			array(),
+			SERIF_VERSION . '.' . (int) filemtime( SERIF_THEME_DIR . $script ),
+			array( 'strategy' => 'defer' )
+		);
+	}
 }
-add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_scripts' );
+add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_assets' );
 
 /**
- * Enqueue editor styles.
+ * Load the same stylesheet inside the block editor.
  */
-function enqueue_editor_styles() {
-	add_editor_style( 'style.css' );
+function editor_styles() {
+	add_editor_style( 'assets/css/style.min.css' );
 }
-add_action( 'after_setup_theme', __NAMESPACE__ . '\\enqueue_editor_styles' );
+add_action( 'after_setup_theme', __NAMESPACE__ . '\\editor_styles' );
 
 /**
- * Dequeue WP core block library styles on frontend pages that don't need them.
+ * Preload the two faces every page paints with above the fold: Plex Sans (site
+ * title, navigation, headings) and Plex Serif Regular (body). Italic and Bold
+ * load on demand. Fonts are declared in theme.json with font-display: swap.
+ *
+ * @param array $resources Resources to preload.
+ * @return array
  */
-function dequeue_block_styles() {
-	wp_dequeue_style( 'wp-block-library-theme' );
+function preload_fonts( $resources ) {
+	foreach ( array( 'IBMPlexSans.woff2', 'IBMPlexSerif-Regular.woff2' ) as $file ) {
+		$resources[] = array(
+			'href'        => get_template_directory_uri() . '/assets/fonts/' . $file,
+			'as'          => 'font',
+			'type'        => 'font/woff2',
+			'crossorigin' => 'anonymous',
+		);
+	}
+	return $resources;
 }
-add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\dequeue_block_styles', 100 );
+add_filter( 'wp_preload_resources', __NAMESPACE__ . '\\preload_fonts' );

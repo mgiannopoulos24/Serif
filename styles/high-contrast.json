@@ -2,68 +2,84 @@
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
 	"title": "High Contrast",
-	"styles": {
+	"settings": {
 		"color": {
-			"background": "#000000",
-			"text": "#ffffff"
-		},
-		"elements": {
-			"link": {
-				"color": {
-					"text": "#ffff00"
+			"palette": [
+				{
+					"slug": "white",
+					"color": "#ffffff",
+					"name": "White"
 				},
-				":hover": {
-					"color": {
-						"text": "#ffffff"
-					}
+				{
+					"slug": "black",
+					"color": "#000000",
+					"name": "Black"
+				},
+				{
+					"slug": "transparent",
+					"color": "transparent",
+					"name": "Transparent"
+				},
+				{
+					"slug": "background",
+					"color": "#000000",
+					"name": "Background"
+				},
+				{
+					"slug": "foreground",
+					"color": "#ffffff",
+					"name": "Foreground"
+				},
+				{
+					"slug": "primary",
+					"color": "#ffff00",
+					"name": "Primary"
+				},
+				{
+					"slug": "secondary",
+					"color": "#ffffff",
+					"name": "Secondary"
+				},
+				{
+					"slug": "muted",
+					"color": "#e6e6e6",
+					"name": "Muted"
+				},
+				{
+					"slug": "border",
+					"color": "#ffffff",
+					"name": "Border"
+				},
+				{
+					"slug": "light",
+					"color": "#000000",
+					"name": "Light"
+				},
+				{
+					"slug": "dark",
+					"color": "#000000",
+					"name": "Dark"
+				},
+				{
+					"slug": "accent",
+					"color": "#00ffff",
+					"name": "Accent"
 				}
-			},
-			"heading": {
-				"color": {
-					"text": "#ffffff"
-				}
-			},
+			]
+		}
+	},
+	"styles": {
+		"elements": {
 			"button": {
 				"color": {
-					"background": "#ffffff",
-					"text": "#000000"
+					"text": "var(--wp--preset--color--black)"
 				}
 			},
-			"caption": {
-				"color": {
-					"text": "#cccccc"
-				}
-			}
-		},
-		"blocks": {
-			"core/quote": {
-				"color": {
-					"text": "#ffffff",
-					"background": "#1a1a1a"
-				},
-				"border": {
-					"left": {
-						"color": "#ffff00"
+			"link": {
+				":hover": {
+					"color": {
+						"text": "var(--wp--preset--color--accent)"
 					}
-				}
-			},
-			"core/pullquote": {
-				"color": {
-					"text": "#ffffff",
-					"background": "#1a1a1a"
-				},
-				"border": {
-					"top": {
-						"color": "#ffff00"
-					},
-					"bottom": {
-						"color": "#ffff00"
-					}
-				}
-			},
-			"core/separator": {
-				"border": {
-					"color": "#ffffff"
 				}
 			}
 		}

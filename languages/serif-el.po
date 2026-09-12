@@ -1,0 +1,527 @@
+# Copyright (C) 2026 mgiannopoulos24
+# This file is distributed under the GNU General Public License v3 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Serif Child 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/serif\n"
+"Last-Translator: Marios Giannopoulos\n"
+"Language-Team: Greek\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-12T14:43:21+00:00\n"
+"PO-Revision-Date: 2026-09-12 18:00+0300\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: serif\n"
+
+#. Theme Name of the theme
+#: serif-child
+msgid "Serif Child"
+msgstr ""
+
+#. Theme URI of the theme
+#: serif-child
+msgid "https://github.com/mgiannopoulos24/serif"
+msgstr ""
+
+#. Description of the theme
+#: serif-child
+msgid "Serif child theme."
+msgstr "Θυγατρικό θέμα Serif."
+
+#. Author of the theme
+#: serif-child
+msgid "mgiannopoulos24"
+msgstr ""
+
+#. Author URI of the theme
+#: serif-child
+msgid "https://github.com/mgiannopoulos24"
+msgstr ""
+
+#: blocks/breadcrumbs/render.php:12
+msgid "Breadcrumbs"
+msgstr "Διαδρομή πλοήγησης"
+
+#: inc/block-filters.php:80
+msgid "Search the site"
+msgstr "Αναζήτηση στον ιστότοπο"
+
+#: inc/block-filters.php:80
+#: inc/search.php:25
+#: patterns/header.php:28
+#: patterns/no-search-results.php:18
+#: patterns/not-found.php:22
+#: patterns/search-form.php:14
+msgid "Search…"
+msgstr "Αναζήτηση…"
+
+#: inc/block-filters.php:80
+#: inc/block-filters.php:103
+#: inc/search.php:25
+#: inc/search.php:29
+#: patterns/header.php:28
+#: patterns/no-search-results.php:18
+#: patterns/not-found.php:22
+#: patterns/search-form.php:14
+msgid "Search"
+msgstr "Αναζήτηση"
+
+#: inc/block-styles.php:23
+msgid "Large"
+msgstr "Μεγάλο"
+
+#: inc/block-styles.php:48
+msgid "Pull quote"
+msgstr "Απόσπασμα"
+
+#: inc/block-styles.php:91
+msgid "Narrow"
+msgstr "Στενό"
+
+#: inc/block-styles.php:103
+msgid "Thick"
+msgstr "Παχύ"
+
+#: inc/block-styles.php:121
+msgid "Gradient overlay"
+msgstr "Επικάλυψη με διαβάθμιση"
+
+#: inc/block-styles.php:132
+msgid "Dark overlay"
+msgstr "Σκούρα επικάλυψη"
+
+#: inc/block-styles.php:144
+msgid "Shadow"
+msgstr "Σκιά"
+
+#: inc/block-styles.php:155
+msgid "Frame"
+msgstr "Πλαίσιο"
+
+#: inc/block-styles.php:169
+msgid "Serif: Layout"
+msgstr "Serif: Διάταξη"
+
+#: inc/block-styles.php:170
+msgid "Serif: Hero"
+msgstr "Serif: Hero"
+
+#: inc/block-styles.php:171
+msgid "Serif: Media"
+msgstr "Serif: Πολυμέσα"
+
+#. translators: %s: site title.
+#: inc/search.php:23
+#: inc/search.php:35
+#, php-format
+msgid "Search %s"
+msgstr "Αναζήτηση στο %s"
+
+#: inc/search.php:38
+msgid "Close search"
+msgstr "Κλείσιμο αναζήτησης"
+
+#: inc/search.php:43
+msgid "Press Esc to close"
+msgstr "Πατήστε Esc για κλείσιμο"
+
+#: patterns/article-grid.php
+msgctxt "Pattern title"
+msgid "Article Grid"
+msgstr "Πλέγμα άρθρων"
+
+#: patterns/article-grid.php:16
+msgid "Recent articles"
+msgstr "Πρόσφατα άρθρα"
+
+#: patterns/article-grid.php:29
+msgid "No articles yet."
+msgstr "Δεν υπάρχουν άρθρα ακόμη."
+
+#: patterns/author-box.php
+msgctxt "Pattern title"
+msgid "Author Box"
+msgstr "Πλαίσιο συντάκτη"
+
+#: patterns/author-box.php:20
+msgid "Written by"
+msgstr "Κείμενο"
+
+#: patterns/featured-quote.php
+msgctxt "Pattern title"
+msgid "Featured Quote"
+msgstr "Επιλεγμένο απόσπασμα"
+
+#: patterns/featured-quote.php:20
+msgid "The difference between the almost right word and the right word is really a large matter — it is the difference between the lightning bug and the lightning."
+msgstr "Η διαφορά ανάμεσα στη σχεδόν σωστή λέξη και τη σωστή λέξη είναι πραγματικά μεγάλη — είναι η διαφορά ανάμεσα στην πυγολαμπίδα και τον κεραυνό."
+
+#: patterns/featured-quote.php:28
+msgid "Mark Twain"
+msgstr "Μαρκ Τουέιν"
+
+#: patterns/featured-quote.php:32
+msgid "Letter to George Bainton, 1888"
+msgstr "Επιστολή στον George Bainton, 1888"
+
+#: patterns/footer.php
+msgctxt "Pattern title"
+msgid "Footer"
+msgstr "Υποσέλιδο"
+
+#. translators: %s: site title.
+#: patterns/footer.php:49
+#, php-format
+msgid "&copy; %s. All rights reserved."
+msgstr "&copy; %s. Με επιφύλαξη παντός δικαιώματος."
+
+#: patterns/header.php
+msgctxt "Pattern title"
+msgid "Header"
+msgstr "Κεφαλίδα"
+
+#: patterns/header.php:28
+msgid "Search this site"
+msgstr "Αναζήτηση σε αυτόν τον ιστότοπο"
+
+#: patterns/hero-cover.php
+msgctxt "Pattern title"
+msgid "Hero Cover"
+msgstr "Εξώφυλλο hero"
+
+#: patterns/hero-cover.php:21
+msgid "Featured essay"
+msgstr "Επιλεγμένο δοκίμιο"
+
+#: patterns/hero-cover.php:25
+msgid "Writing that takes its time"
+msgstr "Γραφή που παίρνει τον χρόνο της"
+
+#: patterns/hero-cover.php:29
+msgid "Essays, reporting and notes on typography, tools and the craft of long-form — published when there is something worth saying."
+msgstr "Δοκίμια, ρεπορτάζ και σημειώσεις για την τυπογραφία, τα εργαλεία και την τέχνη του εκτενούς κειμένου — δημοσιεύονται όταν υπάρχει κάτι που αξίζει να ειπωθεί."
+
+#: patterns/hero-cover.php:35
+msgid "Start reading"
+msgstr "Ξεκινήστε την ανάγνωση"
+
+#: patterns/newsletter-cta.php
+msgctxt "Pattern title"
+msgid "Newsletter Signup"
+msgstr "Εγγραφή στο ενημερωτικό δελτίο"
+
+#: patterns/newsletter-cta.php:18
+msgid "One letter a month. No more."
+msgstr "Ένα γράμμα τον μήνα. Όχι περισσότερα."
+
+#: patterns/newsletter-cta.php:22
+msgid "New essays, a few links worth your time, and nothing else. Unsubscribe whenever you like."
+msgstr "Νέα δοκίμια, λίγοι σύνδεσμοι που αξίζουν τον χρόνο σας και τίποτα άλλο. Διαγραφή όποτε θέλετε."
+
+#: patterns/newsletter-cta.php:28
+msgid "Subscribe"
+msgstr "Εγγραφή"
+
+#: patterns/newsletter-cta.php:34
+msgid "No tracking pixels. Your address is never shared."
+msgstr "Χωρίς pixel παρακολούθησης. Η διεύθυνσή σας δεν κοινοποιείται ποτέ."
+
+#: patterns/no-results.php
+msgctxt "Pattern title"
+msgid "No Results"
+msgstr "Χωρίς αποτελέσματα"
+
+#: patterns/no-results.php:15
+msgid "Nothing here yet."
+msgstr "Δεν υπάρχει τίποτα εδώ ακόμη."
+
+#: patterns/no-search-results.php
+msgctxt "Pattern title"
+msgid "No Search Results"
+msgstr "Χωρίς αποτελέσματα αναζήτησης"
+
+#: patterns/no-search-results.php:15
+msgid "No results found. Try a different search term."
+msgstr "Δεν βρέθηκαν αποτελέσματα. Δοκιμάστε διαφορετικό όρο αναζήτησης."
+
+#: patterns/no-search-results.php:18
+msgid "Try another search"
+msgstr "Δοκιμάστε άλλη αναζήτηση"
+
+#: patterns/not-found.php
+msgctxt "Pattern title"
+msgid "404 Message"
+msgstr "Μήνυμα 404"
+
+#: patterns/not-found.php:15
+msgid "Page not found"
+msgstr "Η σελίδα δεν βρέθηκε"
+
+#: patterns/not-found.php:19
+msgid "The page you’re looking for doesn’t exist. It may have moved, or the address may be mistyped."
+msgstr "Η σελίδα που αναζητάτε δεν υπάρχει. Ίσως έχει μετακινηθεί ή η διεύθυνση να είναι λανθασμένη."
+
+#: patterns/not-found.php:22
+msgid "Search for a page"
+msgstr "Αναζήτηση σελίδας"
+
+#: patterns/related-posts.php
+msgctxt "Pattern title"
+msgid "Related Posts"
+msgstr "Σχετικά άρθρα"
+
+#: patterns/related-posts.php:18
+msgid "Related posts"
+msgstr "Σχετικά άρθρα"
+
+#: patterns/related-posts.php:31
+msgid "No related posts yet."
+msgstr "Δεν υπάρχουν σχετικά άρθρα ακόμη."
+
+#: patterns/search-form.php
+msgctxt "Pattern title"
+msgid "Search Form"
+msgstr "Φόρμα αναζήτησης"
+
+#: patterns/search-form.php:14
+msgid "Search again"
+msgstr "Αναζήτηση ξανά"
+
+#: patterns/table-of-contents.php
+msgctxt "Pattern title"
+msgid "Table of Contents"
+msgstr "Πίνακας περιεχομένων"
+
+#: patterns/table-of-contents.php:18
+msgid "Contents"
+msgstr "Περιεχόμενα"
+
+#: patterns/table-of-contents.php:23
+msgid "Introduction"
+msgstr "Εισαγωγή"
+
+#: patterns/table-of-contents.php:24
+msgid "Background"
+msgstr "Υπόβαθρο"
+
+#: patterns/table-of-contents.php:25
+msgid "What we found"
+msgstr "Τι βρήκαμε"
+
+#: patterns/table-of-contents.php:26
+msgid "Conclusion"
+msgstr "Συμπέρασμα"
+
+#: blocks/breadcrumbs/block.json
+msgctxt "block title"
+msgid "Breadcrumbs"
+msgstr "Διαδρομή πλοήγησης"
+
+#: blocks/breadcrumbs/block.json
+msgctxt "block description"
+msgid "Breadcrumb trail from Yoast SEO or Rank Math, styled by the theme."
+msgstr "Διαδρομή πλοήγησης από το Yoast SEO ή το Rank Math, με τη μορφοποίηση του θέματος."
+
+#: blocks/breadcrumbs/block.json
+msgctxt "block keyword"
+msgid "breadcrumbs"
+msgstr "διαδρομή πλοήγησης"
+
+#: blocks/breadcrumbs/block.json
+msgctxt "block keyword"
+msgid "navigation"
+msgstr "πλοήγηση"
+
+#: blocks/breadcrumbs/block.json
+msgctxt "block keyword"
+msgid "seo"
+msgstr "seo"
+
+#: theme.json
+#: styles/dark.json
+#: styles/high-contrast.json
+#: styles/sepia.json
+msgctxt "Color name"
+msgid "White"
+msgstr "Λευκό"
+
+#: theme.json
+#: styles/dark.json
+#: styles/high-contrast.json
+#: styles/sepia.json
+msgctxt "Color name"
+msgid "Black"
+msgstr "Μαύρο"
+
+#: theme.json
+#: styles/dark.json
+#: styles/high-contrast.json
+#: styles/sepia.json
+msgctxt "Color name"
+msgid "Transparent"
+msgstr "Διαφανές"
+
+#: theme.json
+#: styles/dark.json
+#: styles/high-contrast.json
+#: styles/sepia.json
+msgctxt "Color name"
+msgid "Background"
+msgstr "Φόντο"
+
+#: theme.json
+#: styles/dark.json
+#: styles/high-contrast.json
+#: styles/sepia.json
+msgctxt "Color name"
+msgid "Foreground"
+msgstr "Προσκήνιο"
+
+#: theme.json
+#: styles/dark.json
+#: styles/high-contrast.json
+#: styles/sepia.json
+msgctxt "Color name"
+msgid "Primary"
+msgstr "Κύριο"
+
+#: theme.json
+#: styles/dark.json
+#: styles/high-contrast.json
+#: styles/sepia.json
+msgctxt "Color name"
+msgid "Secondary"
+msgstr "Δευτερεύον"
+
+#: theme.json
+#: styles/dark.json
+#: styles/high-contrast.json
+#: styles/sepia.json
+msgctxt "Color name"
+msgid "Muted"
+msgstr "Ήπιο"
+
+#: theme.json
+#: styles/dark.json
+#: styles/high-contrast.json
+#: styles/sepia.json
+msgctxt "Color name"
+msgid "Border"
+msgstr "Περίγραμμα"
+
+#: theme.json
+#: styles/dark.json
+#: styles/high-contrast.json
+#: styles/sepia.json
+msgctxt "Color name"
+msgid "Light"
+msgstr "Ανοιχτό"
+
+#: theme.json
+#: styles/dark.json
+#: styles/high-contrast.json
+#: styles/sepia.json
+msgctxt "Color name"
+msgid "Dark"
+msgstr "Σκούρο"
+
+#: theme.json
+#: styles/dark.json
+#: styles/high-contrast.json
+#: styles/sepia.json
+msgctxt "Color name"
+msgid "Accent"
+msgstr "Έμφαση"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Grayscale"
+msgstr "Κλίμακα του γκρι"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Warm"
+msgstr "Θερμό"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Cool"
+msgstr "Ψυχρό"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Editorial"
+msgstr "Εκδοτικό"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "IBM Plex Serif"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "IBM Plex Sans"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr "Μικρό"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr "Μεσαίο"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr "Μεγάλο"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "X-Large"
+msgstr "Πολύ μεγάλο"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XX-Large"
+msgstr "Εξαιρετικά μεγάλο"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XXX-Large"
+msgstr "Τεράστιο"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Blank (Full Width)"
+msgstr "Κενό (πλήρες πλάτος)"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr "Κεφαλίδα"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr "Υποσέλιδο"
+
+#: styles/dark.json
+msgctxt "Style variation name"
+msgid "Dark"
+msgstr "Σκούρο"
+
+#: styles/high-contrast.json
+msgctxt "Style variation name"
+msgid "High Contrast"
+msgstr "Υψηλή αντίθεση"
+
+#: styles/sepia.json
+msgctxt "Style variation name"
+msgid "Sepia"
+msgstr "Σέπια"

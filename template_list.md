@@ -2,6 +2,43 @@
 
 FSE block theme using `.html` files with block markup. No PHP templates.
 
+This file is the **target spec**. Where the current file on disk differs, the
+Status table below says so and `TODO.md` → *Priority Fixes* has the action.
+
+---
+
+## Status (2026-09-12, after P0 + P1)
+
+All files below now carry full serialized block markup and render without PHP
+notices in wp-env (`WP_DEVELOPMENT_MODE: theme` is required for new pattern
+files to be picked up).
+
+| File | Exists | State |
+|---|---|---|
+| `templates/index.html` | yes | OK — query loop fallback |
+| `templates/home.html` | yes | OK |
+| `templates/front-page.html` | yes | OK — hero uses the front page's featured image |
+| `templates/single.html` | yes | OK |
+| `templates/page.html` | yes | OK |
+| `templates/archive.html` | yes | OK |
+| `templates/search.html` | yes | OK |
+| `templates/404.html` | yes | OK |
+| `templates/blank.html` | yes | OK |
+| `parts/header.html` | yes | OK — wraps `patterns/header.php`: logo, title, Navigation (mobile overlay), expanding search |
+| `parts/footer.html` | yes | OK — wraps `patterns/footer.php` |
+| `parts/post-meta.html` | yes | OK |
+| `parts/entry-header.html` | yes | OK |
+| `parts/entry-footer.html` | yes | OK |
+| `parts/comments.html` | yes | OK |
+| `parts/off-canvas.html` | no | **probably unnecessary** — see note under Template Parts |
+| `patterns/article-grid.php` | yes | OK |
+| `patterns/author-box.php` | yes | OK |
+| `patterns/related-posts.php` | yes | OK — category-scoped via `inc/block-patterns.php` |
+| `patterns/newsletter-cta.php` | yes | OK |
+| `patterns/hero-cover.php` | yes | OK — for `front-page.html` |
+| `patterns/featured-quote.php` | yes | OK |
+| `patterns/table-of-contents.php` | yes | OK |
+
 ---
 
 ## A Walk Through the Site
@@ -9,14 +46,14 @@ FSE block theme using `.html` files with block markup. No PHP templates.
 You land on **front-page.html** — a full-bleed cover image with the site title, a
 "Featured" section showing three latest posts, and a newsletter CTA. For a
 minimalist who just wants a clean blog landing, **home.html** skips the hero and
-goes straight into a paginated post grid.
+goes straight into a paginated post list.
 
 Click a post title and you're on **single.html**: the featured image splashed
 across the top as a cover background, the title overlaid on it, then the full
-article body below. Tags, share buttons, and prev/next links sit at the bottom.
-Below that, an author card, a row of related posts, and finally the comment
-thread. If you're on a static page like About or Contact, **page.html** strips
-it down — just title, featured image, and content.
+article body below. Tags and prev/next links sit at the bottom. Below that, an
+author card, a row of related posts, and finally the comment thread. If you're
+on a static page like About or Contact, **page.html** strips it down — just
+title, featured image, and content.
 
 Browsing a category or tag sends you to **archive.html**: a heading showing
 "Category: Design" or "Tag: Typography", an optional description, then a post
@@ -30,20 +67,19 @@ Typo a URL? **404.html** shows a centered "Page Not Found" heading, another
 search bar, and a grid of recent articles to reclaim the lost visitor.
 
 Need a full-canvas landing page with no chrome? **blank.html** gives you just
-the post content — no header, no footer, nothing else. Perfect for custom page
-builders.
+the post content — no header, no footer, nothing else.
 
 If nothing else matches, **index.html** catches everything as a last resort with
-a simple title, featured image, and content layout.
+a plain post list — the same loop as `home.html`.
 
 **Behind every page:** The **header** carries the site logo, title, and
-navigation (which collapses into a slide-in **off-canvas** panel on mobile). The
-**footer** has three widget columns, copyright, and social links. On single
-posts, **post-meta** shows the author avatar, name, date, categories, and
-reading time. The **entry-header** wraps the title and meta inside the featured
-image cover. The **entry-footer** handles tags, sharing, and post navigation.
-And **comments** renders the threaded discussion with the reply form at the
-bottom.
+navigation (the core Navigation block collapses into its own overlay menu on
+mobile). The **footer** has a secondary nav, a short blurb, copyright, and
+social links. On single posts, **post-meta** shows the author avatar, name,
+date, categories, and reading time. The **entry-header** wraps the title and
+meta inside the featured image cover. The **entry-footer** handles tags and
+post navigation. And **comments** renders the threaded discussion with the
+reply form at the bottom.
 
 ---
 
@@ -51,7 +87,7 @@ bottom.
 
 ```
 templates/
-├── index.html          # Fallback (lowest priority)
+├── index.html          # Fallback (lowest priority) — query loop
 ├── home.html           # Blog posts index
 ├── front-page.html     # Static front page (optional)
 ├── single.html         # Single post
@@ -62,14 +98,26 @@ templates/
 └── blank.html          # Full canvas, no header/footer
 
 parts/
-├── header.html         # Site header (logo, nav, search toggle)
-├── footer.html         # Site footer (widgets, copyright, social)
+├── header.html         # <!-- wp:pattern serif/header -->
+├── footer.html         # <!-- wp:pattern serif/footer -->
 ├── post-meta.html      # Author avatar, date, reading time, categories
 ├── entry-header.html   # Post title + featured image + overlay
-├── entry-footer.html   # Tags, share, prev/next nav
-├── comments.html       # Comment list + form
-└── off-canvas.html     # Mobile menu panel (slide-in)
+├── entry-footer.html   # Tags, prev/next nav
+└── comments.html       # Comment list + form
+
+patterns/
+├── header.php          # Logo + title + navigation
+├── footer.php          # Nav + blurb + copyright + social
+├── article-grid.php    # Recent posts grid (used by 404)
+├── author-box.php      # Avatar + bio (used by single)
+├── related-posts.php   # Same-category posts (used by single)
+├── newsletter-cta.php  # Cover + form (used by front-page)
 ```
+
+**Why header/footer parts wrap patterns:** the pattern is the editable
+source of truth, the part is the slot templates reference. Only the *part*
+sets `tagName` (`header`/`footer`) — the pattern's outer group must **not**,
+or the output is `<header><header>`.
 
 ---
 
@@ -77,15 +125,25 @@ parts/
 
 ### `templates/index.html` — Fallback
 
-Lowest-priority fallback. Used when no other template matches.
+Lowest-priority fallback. Used when no other template matches — which
+includes *list* views, so it must be a loop, not a single-post layout.
 
 ```html
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
 
 <!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
-    <!-- wp:post-title /-->
-    <!-- wp:post-featured-image /-->
-    <!-- wp:post-content /-->
+    <!-- wp:query {"query":{"inherit":true}} -->
+        <!-- wp:post-template -->
+            <!-- wp:post-featured-image /-->
+            <!-- wp:post-title {"isLink":true} /-->
+            <!-- wp:post-excerpt /-->
+            <!-- wp:template-part {"slug":"post-meta"} /-->
+        <!-- /wp:post-template -->
+        <!-- wp:query-no-results -->
+            <!-- wp:paragraph --><p>Nothing here yet.</p><!-- /wp:paragraph -->
+        <!-- /wp:query-no-results -->
+        <!-- wp:query-pagination /-->
+    <!-- /wp:query -->
 <!-- /wp:group -->
 
 <!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->
@@ -94,8 +152,6 @@ Lowest-priority fallback. Used when no other template matches.
 ### `templates/home.html` — Blog Index
 
 Landing page when front page displays "Your latest posts."
-
-**Blocks:** `query-loop` with card-style post items (title, excerpt, featured image, meta). Pagination.
 
 ```html
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
@@ -108,6 +164,9 @@ Landing page when front page displays "Your latest posts."
             <!-- wp:post-excerpt /-->
             <!-- wp:template-part {"slug":"post-meta"} /-->
         <!-- /wp:post-template -->
+        <!-- wp:query-no-results -->
+            <!-- wp:paragraph --><p>No posts yet.</p><!-- /wp:paragraph -->
+        <!-- /wp:query-no-results -->
         <!-- wp:query-pagination /-->
     <!-- /wp:query -->
 <!-- /wp:group -->
@@ -117,20 +176,25 @@ Landing page when front page displays "Your latest posts."
 
 ### `templates/front-page.html` — Static Front Page
 
-Used when a static page is set as front page. Hero section, featured posts, optional CTAs.
+Used when a static page is set as front page. Hero, three featured posts, CTA.
 
 ```html
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
 
-<!-- wp:cover {"overlayColor":"primary","minHeight":70,"align":"full"} -->
-    <!-- wp:heading {"level":1} --><!-- /wp:heading -->
-    <!-- wp:paragraph --><!-- /wp:paragraph -->
+<!-- wp:cover {"useFeaturedImage":true,"overlayColor":"dark","dimRatio":60,"minHeight":70,"minHeightUnit":"vh","align":"full"} -->
+    <!-- wp:site-title {"level":1,"textColor":"white"} /-->
+    <!-- wp:site-tagline {"textColor":"light"} /-->
+    <!-- wp:buttons --> Start reading → #featured <!-- /wp:buttons -->
 <!-- /wp:cover -->
 
 <!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
-    <!-- wp:heading {"level":2} -->Featured<!-- /wp:heading -->
-    <!-- wp:query {"query":{"perPage":3,"postType":"post"}} -->
-        <!-- wp:post-template /-->
+    <!-- wp:heading {"level":2} --><h2>Featured</h2><!-- /wp:heading -->
+    <!-- wp:query {"query":{"perPage":3,"postType":"post","inherit":false}} -->
+        <!-- wp:post-template {"layout":{"type":"grid","columnCount":3}} -->
+            <!-- wp:post-featured-image /-->
+            <!-- wp:post-title {"isLink":true} /-->
+            <!-- wp:post-excerpt /-->
+        <!-- /wp:post-template -->
     <!-- /wp:query -->
     <!-- wp:pattern {"slug":"serif/newsletter-cta"} /-->
 <!-- /wp:group -->
@@ -139,10 +203,6 @@ Used when a static page is set as front page. Hero section, featured posts, opti
 ```
 
 ### `templates/single.html` — Single Post
-
-Blog post detail view.
-
-**Blocks:** Entry header (title + featured image + meta), post content, author box, related posts, comments.
 
 ```html
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
@@ -160,8 +220,6 @@ Blog post detail view.
 ```
 
 ### `templates/page.html` — Static Page
-
-Clean minimal layout for pages like About, Contact.
 
 ```html
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
@@ -192,6 +250,9 @@ Handles categories, tags, authors, and date archives.
             <!-- wp:post-excerpt /-->
             <!-- wp:template-part {"slug":"post-meta"} /-->
         <!-- /wp:post-template -->
+        <!-- wp:query-no-results -->
+            <!-- wp:paragraph --><p>No posts in this archive.</p><!-- /wp:paragraph -->
+        <!-- /wp:query-no-results -->
         <!-- wp:query-pagination /-->
     <!-- /wp:query -->
 <!-- /wp:group -->
@@ -228,7 +289,7 @@ Handles categories, tags, authors, and date archives.
 ```html
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
 
-<!-- wp:group {"tagName":"main","layout":{"type":"constrained"},"align":"full"} -->
+<!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
     <!-- wp:heading {"level":1,"textAlign":"center"} --><h1>Page Not Found</h1><!-- /wp:heading -->
     <!-- wp:paragraph {"align":"center"} --><p>The page you're looking for doesn't exist.</p><!-- /wp:paragraph -->
     <!-- wp:search {"label":"Search","showLabel":false} /-->
@@ -240,7 +301,7 @@ Handles categories, tags, authors, and date archives.
 
 ### `templates/blank.html` — Full Canvas
 
-No header, no footer. For landing pages or custom builders. Only post content.
+No header, no footer. Registered in `theme.json` `customTemplates` as `blank`.
 
 ```html
 <!-- wp:post-content {"layout":{"inherit":false}} /-->
@@ -252,31 +313,59 @@ No header, no footer. For landing pages or custom builders. Only post content.
 
 ### `parts/header.html`
 
-Site identity + navigation + optional search toggle.
+```html
+<!-- wp:pattern {"slug":"serif/header"} /-->
+```
+
+### `patterns/header.php` (what the part renders)
+
+No `tagName` on the outer group — the part already supplies `<header>`.
 
 ```html
-<!-- wp:group {"tagName":"header","layout":{"type":"flex","flexWrap":"nowrap"}} -->
-    <!-- wp:site-logo {"width":48} /-->
-    <!-- wp:site-title /-->
-    <!-- wp:navigation {"icon":"menu","layout":{"type":"flex","setCascadingMenu":true,"justify":"right"}} /-->
+<!-- wp:group {"align":"full","layout":{"type":"constrained"}} -->
+    <!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"12px","bottom":"12px"}}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
+        <!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+            <!-- wp:site-logo {"width":48} /-->
+            <!-- wp:site-title /-->
+        <!-- /wp:group -->
+        <!-- wp:navigation {"overlayMenu":"mobile","layout":{"type":"flex","justifyContent":"right"}} /-->
+    <!-- /wp:group -->
 <!-- /wp:group -->
 ```
 
-Sticky behavior, hamburger menu, and search toggle handled via CSS/JS, not block markup.
+Sticky header is CSS (`position: sticky` on `header.wp-block-template-part`).
 
 ### `parts/footer.html`
 
 ```html
-<!-- wp:group {"tagName":"footer","layout":{"type":"constrained"}} -->
-    <!-- wp:columns -->
-        <!-- wp:column --><!-- wp:widget-area /--><!-- /wp:column -->
-        <!-- wp:column --><!-- wp:widget-area /--><!-- /wp:column -->
-        <!-- wp:column --><!-- wp:widget-area /--><!-- /wp:column -->
+<!-- wp:pattern {"slug":"serif/footer"} /-->
+```
+
+### `patterns/footer.php` (what the part renders)
+
+Block themes have no widget areas — `wp:widget-area` is not a block. Use real
+blocks in the columns.
+
+```html
+<!-- wp:group {"align":"full","layout":{"type":"constrained"}} -->
+    <!-- wp:columns {"align":"wide"} -->
+        <!-- wp:column -->
+            <!-- wp:site-title {"level":0} /-->
+            <!-- wp:site-tagline /-->
+        <!-- /wp:column -->
+        <!-- wp:column -->
+            <!-- wp:navigation {"overlayMenu":"never","layout":{"type":"flex","orientation":"vertical"}} /-->
+        <!-- /wp:column -->
+        <!-- wp:column -->
+            <!-- wp:social-links -->
+                <!-- wp:social-link {"service":"twitter"} /-->
+                <!-- wp:social-link {"service":"github"} /-->
+            <!-- /wp:social-links -->
+        <!-- /wp:column -->
     <!-- /wp:columns -->
     <!-- wp:paragraph {"align":"center","fontSize":"small"} -->
-        <p>&copy; 2025 Serif. All rights reserved.</p>
+        <p>&copy; Serif. All rights reserved.</p>
     <!-- /wp:paragraph -->
-    <!-- wp:social-links /-->
 <!-- /wp:group -->
 ```
 
@@ -292,25 +381,33 @@ Sticky behavior, hamburger menu, and search toggle handled via CSS/JS, not block
 <!-- /wp:group -->
 ```
 
-Reading time injected dynamically (via the Serif ReadTime plugin block).
+Reading time injected dynamically (via the Serif ReadTime plugin block, Phase 9).
 
 ### `parts/entry-header.html`
 
+`minHeight` defaults to **px** — `minHeightUnit` is required for `vh`.
+
 ```html
-<!-- wp:cover {"useFeaturedImage":true,"dimRatio":50,"minHeight":60,"align":"full"} -->
-    <!-- wp:post-title {"level":1} /-->
-    <!-- wp:template-part {"slug":"post-meta"} /-->
+<!-- wp:cover {"useFeaturedImage":true,"dimRatio":50,"minHeight":60,"minHeightUnit":"vh","align":"full"} -->
+    <!-- wp:group {"layout":{"type":"constrained"}} -->
+        <!-- wp:post-title {"level":1} /-->
+        <!-- wp:template-part {"slug":"post-meta"} /-->
+    <!-- /wp:group -->
 <!-- /wp:cover -->
 ```
 
 ### `parts/entry-footer.html`
 
+Sharing links dropped — an empty `wp:social-links` renders nothing, and
+per-post share buttons belong to a plugin, not the theme.
+
 ```html
 <!-- wp:group -->
     <!-- wp:post-terms {"term":"post_tag"} /-->
-    <!-- wp:social-links /-->
-    <!-- wp:post-navigation-link {"type":"previous"} /-->
-    <!-- wp:post-navigation-link {"type":"next"} /-->
+    <!-- wp:group {"layout":{"type":"flex","justifyContent":"space-between"}} -->
+        <!-- wp:post-navigation-link {"type":"previous"} /-->
+        <!-- wp:post-navigation-link {"type":"next"} /-->
+    <!-- /wp:group -->
 <!-- /wp:group -->
 ```
 
@@ -333,33 +430,42 @@ Reading time injected dynamically (via the Serif ReadTime plugin block).
 <!-- /wp:group -->
 ```
 
-### `parts/off-canvas.html`
+### `parts/off-canvas.html` — probably not needed
 
-Mobile navigation panel — toggled via CSS/JS, not by block visibility.
+The core Navigation block with `"overlayMenu":"mobile"` already ships a
+responsive, accessible (focus-trapped, Escape-to-close) overlay menu — no
+custom JS or extra part required. Only build a custom off-canvas panel if the
+built-in overlay proves insufficient (e.g. you want a search field inside it).
+If so:
 
 ```html
 <!-- wp:group {"className":"off-canvas-panel"} -->
-    <!-- wp:navigation {"layout":{"type":"vertical"}} /-->
+    <!-- wp:navigation {"overlayMenu":"never","layout":{"type":"flex","orientation":"vertical"}} /-->
     <!-- wp:search /-->
 <!-- /wp:group -->
 ```
 
 ---
 
-## Template Hierarchy (WordPress FSE)
+## Template Hierarchy (block themes)
+
+Block templates resolve in the same order as the classic hierarchy; `.html`
+wins over `.php`. Most specific first:
 
 ```
-front-page.html          → front-page.php (classic fallback)
-home.html                 → home.php
-single.html               → single-{post-type}.php → single.php
-page.html                 → page-{slug}.php → page.php
-archive.html              → archive-{term}.php → archive.php
-search.html               → search.php
-404.html                  → 404.php
-index.html                → index.php (last resort)
+front-page.html   → used for the front page whether static page or posts list
+home.html         → posts index (front page when "latest posts", else the Posts page)
+single.html       → single-{post-type}-{slug}.html → single-{post-type}.html → single.html
+page.html         → page-{slug}.html → page-{id}.html → page.html
+archive.html      → category-{slug}.html → category.html → taxonomy-*.html → author.html → date.html → archive.html
+search.html
+404.html
+index.html        → last resort for everything
 ```
 
-All `.html` files resolve natively in FSE themes. No PHP templates needed unless overriding block behavior.
+Note: `front-page.html` takes `/` regardless of the Reading setting. Set a
+Posts page (Settings → Reading) to get the paginated `home.html` list — the
+seed uses `/journal/`. The hero image is the front page's featured image.
 
 ---
 
@@ -369,8 +475,9 @@ Every template relies on `theme.json` for:
 
 - **Layout:** `contentSize: 720px`, `wideSize: 1100px`
 - **Typography:** IBM Plex Serif (body), IBM Plex Sans (headings)
-- **Colors:** 10–12 color palette, dark mode presets
+- **Colors:** 12-color palette; dark/sepia/high-contrast via `styles/*.json` variations
 - **Spacing:** `padding`, `margin` units
 - **Per-block settings:** `core/post-title`, `core/navigation`, `core/cover`, etc.
 
-`theme.json` must exist before templates render correctly.
+`theme.json` is the single source of truth for design tokens. SCSS only
+consumes `var(--wp--preset--*)`.

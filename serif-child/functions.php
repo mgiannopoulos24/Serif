@@ -11,7 +11,7 @@
 function serif_child_enqueue_styles() {
 	wp_enqueue_style(
 		'serif-parent-style',
-		get_template_directory_uri() . '/style.css',
+		get_template_directory_uri() . '/assets/css/style.min.css',
 		array( 'serif-style' ),
 		wp_get_theme()->get( 'Version' )
 	);

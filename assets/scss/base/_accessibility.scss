@@ -1,0 +1,40 @@
+// Accessibility affordances theme.json cannot express.
+// Focus ring and reduced motion live in base/_typography and base/_reset.
+
+// Windows High Contrast / forced-colors: borders and icons must survive.
+@media (forced-colors: active) {
+	.serif-icon,
+	.serif-breadcrumbs .separator {
+		forced-color-adjust: auto;
+	}
+
+	.serif-breadcrumbs .separator {
+		background: CanvasText;
+	}
+
+	.wp-block-search__inside-wrapper,
+	.serif-search__panel,
+	.wp-block-navigation__responsive-container.is-menu-open {
+		border: 1px solid CanvasText;
+	}
+
+	.wp-block-post-featured-image img,
+	.wp-block-image img {
+		border: 1px solid transparent; // keeps image bounds visible
+	}
+}
+
+// Skip link: core injects one for block themes; give it the theme's look when visible.
+.skip-link.screen-reader-text:focus {
+	top: 8px;
+	left: 8px;
+	padding: 12px 16px;
+	background: var(--wp--preset--color--background);
+	color: var(--wp--preset--color--foreground);
+	font-family: var(--wp--preset--font-family--ibm-plex-sans);
+	font-size: var(--wp--preset--font-size--small);
+	font-weight: 600;
+	border-radius: 4px;
+	box-shadow: 0 4px 16px rgba(28, 27, 26, 0.2);
+	z-index: var(--serif-z-overlay);
+}

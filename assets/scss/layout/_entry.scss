@@ -1,0 +1,26 @@
+// Single post entry header: parts/entry-header.html (a Cover with the
+// featured image). Everything inside inherits the cover's white text; the
+// theme.json colours for meta blocks would otherwise vanish on the photo.
+
+.wp-block-cover {
+	.wp-block-post-date,
+	.wp-block-post-author-name,
+	.wp-block-post-terms,
+	.wp-block-post-terms a,
+	.wp-block-post-title a {
+		color: inherit;
+	}
+
+	.wp-block-post-terms a:hover,
+	.wp-block-post-terms a:focus-visible,
+	.wp-block-post-title a:hover,
+	.wp-block-post-title a:focus-visible {
+		color: inherit;
+		opacity: 0.8;
+	}
+
+	.wp-block-post-date,
+	.wp-block-post-author-name {
+		opacity: 0.85;
+	}
+}

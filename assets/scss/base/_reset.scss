@@ -1,4 +1,4 @@
-// Reset
+// Minimal reset. Body font, colour and line-height come from theme.json.
 
 *,
 *::before,
@@ -6,37 +6,31 @@
 	box-sizing: border-box;
 }
 
+html {
+	// In-page anchors (e.g. the front-page "Start reading" → #featured) glide.
+	// The reduced-motion block below sets this back to auto.
+	scroll-behavior: smooth;
+}
+
 body {
 	margin: 0;
-	font-family: var(--serif-font-body);
-    font-weight: 400;
-	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
-a {
-	color: var(--serif-accent);
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-img {
+img,
+video {
 	max-width: 100%;
 	height: auto;
 }
 
-.screen-reader-text {
-	border: 0;
-	clip: rect(1px, 1px, 1px, 1px);
-	clip-path: inset(50%);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
-	word-wrap: normal;
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
 }

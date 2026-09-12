@@ -1,0 +1,65 @@
+// Breadcrumbs rendered by Yoast / Rank Math (inc/integrations/), styled once.
+
+.serif-breadcrumbs {
+	font-family: var(--wp--preset--font-family--ibm-plex-sans);
+	font-size: var(--wp--preset--font-size--small);
+	line-height: 1.4;
+	color: var(--wp--preset--color--muted);
+
+	// Inside the single-post cover the text is white; keep it.
+	.wp-block-cover & {
+		color: inherit;
+		opacity: 0.85;
+	}
+
+	p,
+	span {
+		display: inline;
+		margin: 0;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: none;
+
+		&:hover,
+		&:focus-visible {
+			color: var(--wp--preset--color--primary);
+			text-decoration: underline;
+
+			.wp-block-cover & {
+				color: inherit;
+			}
+		}
+	}
+
+	.breadcrumb_last,
+	.last {
+		color: var(--wp--preset--color--foreground);
+
+		.wp-block-cover & {
+			color: inherit;
+			opacity: 1;
+		}
+	}
+}
+
+.serif-breadcrumbs__sep {
+	width: 1em;
+	height: 1em;
+	margin: 0 2px;
+	vertical-align: -0.15em;
+	opacity: 0.7;
+}
+
+// Rank Math strips SVG from its separator; draw the same MDL chevron via mask.
+.serif-breadcrumbs .separator {
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	margin: 0 2px;
+	vertical-align: -0.15em;
+	background: currentColor;
+	opacity: 0.7;
+	mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,18.16L14.25,12.5L8.59,6.84L7.89,7.55L12.84,12.5L7.89,17.45L8.59,18.16Z"/></svg>') center / contain no-repeat;
+}

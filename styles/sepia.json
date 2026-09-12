@@ -2,70 +2,70 @@
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
 	"title": "Sepia",
-	"styles": {
+	"settings": {
 		"color": {
-			"background": "#fbf7f0",
-			"text": "#5c4033"
-		},
-		"elements": {
-			"link": {
-				"color": {
-					"text": "#8b4513"
+			"palette": [
+				{
+					"slug": "white",
+					"color": "#ffffff",
+					"name": "White"
 				},
-				":hover": {
-					"color": {
-						"text": "#3d2b1f"
-					}
-				}
-			},
-			"heading": {
-				"color": {
-					"text": "#3d2b1f"
-				}
-			},
-			"button": {
-				"color": {
-					"background": "#8b4513",
-					"text": "#fbf7f0"
-				}
-			},
-			"caption": {
-				"color": {
-					"text": "#8a7b6b"
-				}
-			}
-		},
-		"blocks": {
-			"core/quote": {
-				"color": {
-					"text": "#3d2b1f",
-					"background": "#f5eed9"
+				{
+					"slug": "black",
+					"color": "#000000",
+					"name": "Black"
 				},
-				"border": {
-					"left": {
-						"color": "#8b4513"
-					}
-				}
-			},
-			"core/pullquote": {
-				"color": {
-					"text": "#3d2b1f",
-					"background": "#f5eed9"
+				{
+					"slug": "transparent",
+					"color": "transparent",
+					"name": "Transparent"
 				},
-				"border": {
-					"top": {
-						"color": "#8b4513"
-					},
-					"bottom": {
-						"color": "#8b4513"
-					}
+				{
+					"slug": "background",
+					"color": "#f3e9d6",
+					"name": "Background"
+				},
+				{
+					"slug": "foreground",
+					"color": "#3b2a1c",
+					"name": "Foreground"
+				},
+				{
+					"slug": "primary",
+					"color": "#8a4a17",
+					"name": "Primary"
+				},
+				{
+					"slug": "secondary",
+					"color": "#5f4b38",
+					"name": "Secondary"
+				},
+				{
+					"slug": "muted",
+					"color": "#6e5a45",
+					"name": "Muted"
+				},
+				{
+					"slug": "border",
+					"color": "#d9cbb3",
+					"name": "Border"
+				},
+				{
+					"slug": "light",
+					"color": "#ebdfc7",
+					"name": "Light"
+				},
+				{
+					"slug": "dark",
+					"color": "#2a1d12",
+					"name": "Dark"
+				},
+				{
+					"slug": "accent",
+					"color": "#2c5c7c",
+					"name": "Accent"
 				}
-			},
-			"core/separator": {
-				"border": {
-					"color": "#d4c5b5"
-				}
-			}
+			]
 		}
 	}
 }

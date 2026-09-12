@@ -1,12 +1,14 @@
-<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+<!-- wp:template-part {"slug":"header","area":"header","tagName":"header"} /-->
 
 <!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
-	<!-- wp:template-part {"slug":"entry-header"} /-->
-	<!-- wp:post-content /-->
+<main class="wp-block-group">
+	<!-- wp:template-part {"slug":"entry-header","align":"full"} /-->
+	<!-- wp:post-content {"layout":{"type":"constrained"}} /-->
 	<!-- wp:template-part {"slug":"entry-footer"} /-->
 	<!-- wp:pattern {"slug":"serif/author-box"} /-->
 	<!-- wp:pattern {"slug":"serif/related-posts"} /-->
 	<!-- wp:template-part {"slug":"comments"} /-->
+</main>
 <!-- /wp:group -->
 
-<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->
+<!-- wp:template-part {"slug":"footer","area":"footer","tagName":"footer"} /-->

@@ -1,0 +1,14 @@
+// Drop cap: core's default is 8.4em at weight 100 — too tall and too thin for
+// a serif. Aim for three lines at the body size (16px × 1.7 × 3 ≈ 82px).
+
+.has-drop-cap:not(:focus)::first-letter {
+	float: left;
+	margin: 0.1em 0.12em 0 0;
+	font-family: var(--wp--preset--font-family--ibm-plex-serif);
+	font-size: 5.1em;
+	font-weight: 700;
+	font-style: normal;
+	line-height: 0.82;
+	color: var(--wp--preset--color--foreground);
+	text-transform: uppercase;
+}

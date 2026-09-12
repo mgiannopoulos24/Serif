@@ -1,6 +1,12 @@
-<!-- wp:group -->
-	<!-- wp:post-terms {"term":"post_tag"} /-->
-	<!-- wp:social-links /-->
-	<!-- wp:post-navigation-link {"type":"previous"} /-->
-	<!-- wp:post-navigation-link {"type":"next"} /-->
+<!-- wp:group {"style":{"spacing":{"margin":{"top":"48px"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group" style="margin-top:48px">
+	<!-- wp:post-terms {"term":"post_tag","prefix":"Tagged ","fontSize":"small"} /-->
+
+	<!-- wp:group {"style":{"spacing":{"margin":{"top":"24px"}}},"layout":{"type":"flex","justifyContent":"space-between"}} -->
+	<div class="wp-block-group" style="margin-top:24px">
+		<!-- wp:post-navigation-link {"type":"previous","showTitle":true,"arrow":"arrow"} /-->
+		<!-- wp:post-navigation-link {"type":"next","showTitle":true,"arrow":"arrow"} /-->
+	</div>
+	<!-- /wp:group -->
+</div>
 <!-- /wp:group -->

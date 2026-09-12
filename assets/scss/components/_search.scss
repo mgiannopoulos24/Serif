@@ -1,0 +1,189 @@
+// Search overlay: <dialog id="serif-search"> rendered by inc/search.php,
+// opened by assets/js/src/theme.js. Native dialog = focus trap, Esc, inert page.
+
+$gutter: 20px;
+
+.serif-search {
+	// The dialog itself is the full-viewport layer; the panel is a top sheet.
+	position: fixed;
+	inset: 0;
+	width: 100%;
+	max-width: none;
+	height: 100%;
+	max-height: none;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	color: var(--wp--preset--color--foreground);
+
+	&::backdrop {
+		background: rgba(28, 27, 26, 0.55);
+		animation: serif-fade-in 160ms ease-out both;
+	}
+
+	&[open] .serif-search__panel {
+		animation: serif-sheet-in 220ms ease-out both;
+	}
+
+	// Closing: theme.js adds .is-closing, waits for animationend, then close().
+	&.is-closing::backdrop {
+		animation: serif-fade-out 180ms ease-in both;
+	}
+
+	&.is-closing .serif-search__panel {
+		animation: serif-sheet-out 180ms ease-in both;
+	}
+}
+
+.serif-search__panel {
+	width: 100%;
+	padding: $gutter $gutter ($gutter * 2);
+	background: var(--wp--preset--color--background);
+	border-bottom: 1px solid var(--wp--preset--color--border);
+	box-shadow: 0 16px 40px rgba(28, 27, 26, 0.18);
+}
+
+.serif-search__bar,
+.serif-search__form,
+.serif-search__hint {
+	width: min(100%, var(--wp--style--global--content-size, 720px));
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.serif-search__bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 16px;
+}
+
+.serif-search__label {
+	margin: 0;
+	font-family: var(--wp--preset--font-family--ibm-plex-sans);
+	font-size: var(--wp--preset--font-size--small);
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--wp--preset--color--muted);
+}
+
+.serif-search__close {
+	display: grid;
+	place-items: center;
+	width: 44px;
+	height: 44px;
+	margin-right: -8px;
+	padding: 0;
+	color: inherit;
+	background: none;
+	border: 0;
+	cursor: pointer;
+
+	&:hover,
+	&:focus-visible {
+		color: var(--wp--preset--color--primary);
+	}
+}
+
+// The form: one big field with the icon button flush right.
+.serif-search__form {
+	.wp-block-search__inside-wrapper {
+		align-items: stretch;
+		border-bottom: 2px solid var(--wp--preset--color--foreground);
+
+		&:focus-within {
+			border-bottom-color: var(--wp--preset--color--primary);
+		}
+	}
+
+	.wp-block-search__input {
+		flex: 1 1 auto;
+		min-width: 0;
+		padding: 12px 0;
+		border: 0;
+		border-radius: 0;
+		background: transparent;
+		font-family: var(--wp--preset--font-family--ibm-plex-serif);
+		font-size: clamp(1.5rem, 4vw, 2.25rem);
+		line-height: 1.2;
+		color: inherit;
+
+		&::placeholder {
+			color: var(--wp--preset--color--muted);
+		}
+
+		&:focus-visible {
+			outline: none; // the underline colour is the focus indicator
+		}
+	}
+
+	.wp-block-search__button {
+		display: grid;
+		place-items: center;
+		min-width: 56px;
+		margin: 0;
+		padding: 0;
+		color: var(--wp--preset--color--foreground);
+		background: none;
+		border: 0;
+		cursor: pointer;
+
+		&:hover,
+		&:focus-visible {
+			color: var(--wp--preset--color--primary);
+		}
+
+		.serif-icon {
+			width: 36px;
+			height: 36px;
+		}
+	}
+}
+
+.serif-search__hint {
+	margin-top: 12px;
+	margin-bottom: 0;
+	font-family: var(--wp--preset--font-family--ibm-plex-sans);
+	font-size: var(--wp--preset--font-size--small);
+	color: var(--wp--preset--color--muted);
+
+	@media (hover: none) {
+		display: none; // no keyboard hint on touch devices
+	}
+}
+
+@keyframes serif-fade-in {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+@keyframes serif-fade-out {
+	from { opacity: 1; }
+	to { opacity: 0; }
+}
+
+@keyframes serif-sheet-out {
+	from {
+		opacity: 1;
+		transform: none;
+	}
+
+	to {
+		opacity: 0;
+		transform: translateY(-12px);
+	}
+}
+
+@keyframes serif-sheet-in {
+	from {
+		opacity: 0;
+		transform: translateY(-12px);
+	}
+
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}

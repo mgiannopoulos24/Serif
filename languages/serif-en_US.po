@@ -1,0 +1,525 @@
+# Copyright (C) 2026 mgiannopoulos24
+# This file is distributed under the GNU General Public License v3 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Serif Child 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/serif\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-12T14:43:21+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: serif\n"
+
+#. Theme Name of the theme
+#: serif-child
+msgid "Serif Child"
+msgstr ""
+
+#. Theme URI of the theme
+#: serif-child
+msgid "https://github.com/mgiannopoulos24/serif"
+msgstr ""
+
+#. Description of the theme
+#: serif-child
+msgid "Serif child theme."
+msgstr ""
+
+#. Author of the theme
+#: serif-child
+msgid "mgiannopoulos24"
+msgstr ""
+
+#. Author URI of the theme
+#: serif-child
+msgid "https://github.com/mgiannopoulos24"
+msgstr ""
+
+#: blocks/breadcrumbs/render.php:12
+msgid "Breadcrumbs"
+msgstr ""
+
+#: inc/block-filters.php:80
+msgid "Search the site"
+msgstr ""
+
+#: inc/block-filters.php:80
+#: inc/search.php:25
+#: patterns/header.php:28
+#: patterns/no-search-results.php:18
+#: patterns/not-found.php:22
+#: patterns/search-form.php:14
+msgid "Search…"
+msgstr ""
+
+#: inc/block-filters.php:80
+#: inc/block-filters.php:103
+#: inc/search.php:25
+#: inc/search.php:29
+#: patterns/header.php:28
+#: patterns/no-search-results.php:18
+#: patterns/not-found.php:22
+#: patterns/search-form.php:14
+msgid "Search"
+msgstr ""
+
+#: inc/block-styles.php:23
+msgid "Large"
+msgstr ""
+
+#: inc/block-styles.php:48
+msgid "Pull quote"
+msgstr ""
+
+#: inc/block-styles.php:91
+msgid "Narrow"
+msgstr ""
+
+#: inc/block-styles.php:103
+msgid "Thick"
+msgstr ""
+
+#: inc/block-styles.php:121
+msgid "Gradient overlay"
+msgstr ""
+
+#: inc/block-styles.php:132
+msgid "Dark overlay"
+msgstr ""
+
+#: inc/block-styles.php:144
+msgid "Shadow"
+msgstr ""
+
+#: inc/block-styles.php:155
+msgid "Frame"
+msgstr ""
+
+#: inc/block-styles.php:169
+msgid "Serif: Layout"
+msgstr ""
+
+#: inc/block-styles.php:170
+msgid "Serif: Hero"
+msgstr ""
+
+#: inc/block-styles.php:171
+msgid "Serif: Media"
+msgstr ""
+
+#. translators: %s: site title.
+#: inc/search.php:23
+#: inc/search.php:35
+#, php-format
+msgid "Search %s"
+msgstr ""
+
+#: inc/search.php:38
+msgid "Close search"
+msgstr ""
+
+#: inc/search.php:43
+msgid "Press Esc to close"
+msgstr ""
+
+#: patterns/article-grid.php
+msgctxt "Pattern title"
+msgid "Article Grid"
+msgstr ""
+
+#: patterns/article-grid.php:16
+msgid "Recent articles"
+msgstr ""
+
+#: patterns/article-grid.php:29
+msgid "No articles yet."
+msgstr ""
+
+#: patterns/author-box.php
+msgctxt "Pattern title"
+msgid "Author Box"
+msgstr ""
+
+#: patterns/author-box.php:20
+msgid "Written by"
+msgstr ""
+
+#: patterns/featured-quote.php
+msgctxt "Pattern title"
+msgid "Featured Quote"
+msgstr ""
+
+#: patterns/featured-quote.php:20
+msgid "The difference between the almost right word and the right word is really a large matter — it is the difference between the lightning bug and the lightning."
+msgstr ""
+
+#: patterns/featured-quote.php:28
+msgid "Mark Twain"
+msgstr ""
+
+#: patterns/featured-quote.php:32
+msgid "Letter to George Bainton, 1888"
+msgstr ""
+
+#: patterns/footer.php
+msgctxt "Pattern title"
+msgid "Footer"
+msgstr ""
+
+#. translators: %s: site title.
+#: patterns/footer.php:49
+#, php-format
+msgid "&copy; %s. All rights reserved."
+msgstr ""
+
+#: patterns/header.php
+msgctxt "Pattern title"
+msgid "Header"
+msgstr ""
+
+#: patterns/header.php:28
+msgid "Search this site"
+msgstr ""
+
+#: patterns/hero-cover.php
+msgctxt "Pattern title"
+msgid "Hero Cover"
+msgstr ""
+
+#: patterns/hero-cover.php:21
+msgid "Featured essay"
+msgstr ""
+
+#: patterns/hero-cover.php:25
+msgid "Writing that takes its time"
+msgstr ""
+
+#: patterns/hero-cover.php:29
+msgid "Essays, reporting and notes on typography, tools and the craft of long-form — published when there is something worth saying."
+msgstr ""
+
+#: patterns/hero-cover.php:35
+msgid "Start reading"
+msgstr ""
+
+#: patterns/newsletter-cta.php
+msgctxt "Pattern title"
+msgid "Newsletter Signup"
+msgstr ""
+
+#: patterns/newsletter-cta.php:18
+msgid "One letter a month. No more."
+msgstr ""
+
+#: patterns/newsletter-cta.php:22
+msgid "New essays, a few links worth your time, and nothing else. Unsubscribe whenever you like."
+msgstr ""
+
+#: patterns/newsletter-cta.php:28
+msgid "Subscribe"
+msgstr ""
+
+#: patterns/newsletter-cta.php:34
+msgid "No tracking pixels. Your address is never shared."
+msgstr ""
+
+#: patterns/no-results.php
+msgctxt "Pattern title"
+msgid "No Results"
+msgstr ""
+
+#: patterns/no-results.php:15
+msgid "Nothing here yet."
+msgstr ""
+
+#: patterns/no-search-results.php
+msgctxt "Pattern title"
+msgid "No Search Results"
+msgstr ""
+
+#: patterns/no-search-results.php:15
+msgid "No results found. Try a different search term."
+msgstr ""
+
+#: patterns/no-search-results.php:18
+msgid "Try another search"
+msgstr ""
+
+#: patterns/not-found.php
+msgctxt "Pattern title"
+msgid "404 Message"
+msgstr ""
+
+#: patterns/not-found.php:15
+msgid "Page not found"
+msgstr ""
+
+#: patterns/not-found.php:19
+msgid "The page you’re looking for doesn’t exist. It may have moved, or the address may be mistyped."
+msgstr ""
+
+#: patterns/not-found.php:22
+msgid "Search for a page"
+msgstr ""
+
+#: patterns/related-posts.php
+msgctxt "Pattern title"
+msgid "Related Posts"
+msgstr ""
+
+#: patterns/related-posts.php:18
+msgid "Related posts"
+msgstr ""
+
+#: patterns/related-posts.php:31
+msgid "No related posts yet."
+msgstr ""
+
+#: patterns/search-form.php
+msgctxt "Pattern title"
+msgid "Search Form"
+msgstr ""
+
+#: patterns/search-form.php:14
+msgid "Search again"
+msgstr ""
+
+#: patterns/table-of-contents.php
+msgctxt "Pattern title"
+msgid "Table of Contents"
+msgstr ""
+
+#: patterns/table-of-contents.php:18
+msgid "Contents"
+msgstr ""
+
+#: patterns/table-of-contents.php:23
+msgid "Introduction"
+msgstr ""
+
+#: patterns/table-of-contents.php:24
+msgid "Background"
+msgstr ""
+
+#: patterns/table-of-contents.php:25
+msgid "What we found"
+msgstr ""
+
+#: patterns/table-of-contents.php:26
+msgid "Conclusion"
+msgstr ""
+
+#: blocks/breadcrumbs/block.json
+msgctxt "block title"
+msgid "Breadcrumbs"
+msgstr ""
+
+#: blocks/breadcrumbs/block.json
+msgctxt "block description"
+msgid "Breadcrumb trail from Yoast SEO or Rank Math, styled by the theme."
+msgstr ""
+
+#: blocks/breadcrumbs/block.json
+msgctxt "block keyword"
+msgid "breadcrumbs"
+msgstr ""
+
+#: blocks/breadcrumbs/block.json
+msgctxt "block keyword"
+msgid "navigation"
+msgstr ""
+
+#: blocks/breadcrumbs/block.json
+msgctxt "block keyword"
+msgid "seo"
+msgstr ""
+
+#: theme.json
+#: styles/dark.json
+#: styles/high-contrast.json
+#: styles/sepia.json
+msgctxt "Color name"
+msgid "White"
+msgstr ""
+
+#: theme.json
+#: styles/dark.json
+#: styles/high-contrast.json
+#: styles/sepia.json
+msgctxt "Color name"
+msgid "Black"
+msgstr ""
+
+#: theme.json
+#: styles/dark.json
+#: styles/high-contrast.json
+#: styles/sepia.json
+msgctxt "Color name"
+msgid "Transparent"
+msgstr ""
+
+#: theme.json
+#: styles/dark.json
+#: styles/high-contrast.json
+#: styles/sepia.json
+msgctxt "Color name"
+msgid "Background"
+msgstr ""
+
+#: theme.json
+#: styles/dark.json
+#: styles/high-contrast.json
+#: styles/sepia.json
+msgctxt "Color name"
+msgid "Foreground"
+msgstr ""
+
+#: theme.json
+#: styles/dark.json
+#: styles/high-contrast.json
+#: styles/sepia.json
+msgctxt "Color name"
+msgid "Primary"
+msgstr ""
+
+#: theme.json
+#: styles/dark.json
+#: styles/high-contrast.json
+#: styles/sepia.json
+msgctxt "Color name"
+msgid "Secondary"
+msgstr ""
+
+#: theme.json
+#: styles/dark.json
+#: styles/high-contrast.json
+#: styles/sepia.json
+msgctxt "Color name"
+msgid "Muted"
+msgstr ""
+
+#: theme.json
+#: styles/dark.json
+#: styles/high-contrast.json
+#: styles/sepia.json
+msgctxt "Color name"
+msgid "Border"
+msgstr ""
+
+#: theme.json
+#: styles/dark.json
+#: styles/high-contrast.json
+#: styles/sepia.json
+msgctxt "Color name"
+msgid "Light"
+msgstr ""
+
+#: theme.json
+#: styles/dark.json
+#: styles/high-contrast.json
+#: styles/sepia.json
+msgctxt "Color name"
+msgid "Dark"
+msgstr ""
+
+#: theme.json
+#: styles/dark.json
+#: styles/high-contrast.json
+#: styles/sepia.json
+msgctxt "Color name"
+msgid "Accent"
+msgstr ""
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Grayscale"
+msgstr ""
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Warm"
+msgstr ""
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Cool"
+msgstr ""
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Editorial"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "IBM Plex Serif"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "IBM Plex Sans"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "X-Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XX-Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XXX-Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Blank (Full Width)"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Style variation name"
+msgid "Dark"
+msgstr ""
+
+#: styles/high-contrast.json
+msgctxt "Style variation name"
+msgid "High Contrast"
+msgstr ""
+
+#: styles/sepia.json
+msgctxt "Style variation name"
+msgid "Sepia"
+msgstr ""

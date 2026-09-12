@@ -1,0 +1,300 @@
+// Header and navigation.
+//
+// The Navigation block (overlayMenu: mobile) renders its own overlay markup and
+// handles open/close, focus trap and Escape. inc/block-filters.php swaps the
+// icons for Material Design Icons Light and injects .serif-menu__brand and
+// .serif-menu__footer into the overlay. This file only styles.
+
+$gutter: 20px; // matches styles.spacing.padding in theme.json
+$header-height: 72px; // 48px logo + 12px padding top/bottom (patterns/header.php)
+
+// --- Icons ------------------------------------------------------------------
+
+.serif-icon {
+	width: 32px;
+	height: 32px;
+	fill: currentColor;
+}
+
+// close.svg is a stroked path (not filled) so it stays thin at any size.
+.serif-icon--close {
+	fill: none;
+}
+
+// --- Toggle buttons: 44px touch targets --------------------------------------
+
+.wp-block-navigation__responsive-container-open,
+.wp-block-navigation__responsive-container-close {
+	display: grid;
+	place-items: center;
+	width: 44px;
+	height: 44px;
+	padding: 0;
+	color: inherit;
+	background: none;
+	border: 0;
+	cursor: pointer;
+}
+
+// Brand row and footer exist in the DOM on every viewport; only show them
+// inside the open overlay.
+.serif-menu__brand,
+.serif-menu__footer {
+	display: none;
+}
+
+// --- Mobile overlay ---------------------------------------------------------
+// Anchored on .wp-block-navigation so these out-rank core's overlay rules,
+// which are (0,4,0) and print after this stylesheet.
+
+// Open/close fade. Core toggles .is-menu-open (Interactivity API) and hides the
+// container with display:none; transitioning `display` with allow-discrete keeps
+// it visible until the opacity fade has finished. Browsers without support get
+// an instant toggle, which is what core does anyway.
+.wp-block-navigation .wp-block-navigation__responsive-container {
+	@media (max-width: 599px) {
+		opacity: 0;
+		transition:
+			opacity 180ms ease-in,
+			display 180ms allow-discrete,
+			overlay 180ms allow-discrete;
+
+		&.is-menu-open {
+			opacity: 1;
+			// Core animates opacity with fill-mode:forwards here, which would keep
+			// the property under animation control and block the close transition.
+			animation: none;
+			transition-duration: 200ms;
+			transition-timing-function: ease-out;
+
+			@starting-style {
+				opacity: 0;
+			}
+		}
+	}
+}
+
+.wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open {
+	padding: 0;
+
+	.wp-block-navigation__responsive-close,
+	.wp-block-navigation__responsive-dialog {
+		width: 100%;
+		height: 100%;
+	}
+
+	.wp-block-navigation__responsive-dialog {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+	}
+
+	// Brand row: sits exactly where the site header was.
+	.serif-menu__brand {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		flex: 0 0 auto;
+		height: $header-height;
+		padding: 0 ($gutter + 44px + 8px) 0 $gutter; // leave room for the close button
+		border-bottom: 1px solid var(--wp--preset--color--border);
+
+		.custom-logo-link {
+			display: inline-flex;
+			line-height: 0;
+		}
+
+		.custom-logo {
+			width: 32px;
+			height: 32px;
+			object-fit: cover;
+			border-radius: 4px;
+		}
+	}
+
+	.serif-menu__title {
+		font-family: var(--wp--preset--font-family--ibm-plex-sans);
+		font-size: var(--wp--preset--font-size--large);
+		font-weight: 700;
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.wp-block-navigation__responsive-container-close {
+		position: absolute;
+		top: ($header-height - 44px) * 0.5;
+		right: $gutter;
+	}
+
+	// Content: fills the rest, footer pinned to the bottom.
+	.wp-block-navigation__responsive-container-content {
+		display: flex;
+		flex-direction: column;
+		flex: 1 1 auto;
+		align-items: stretch; // core inherits the desktop justification here
+		padding: 8px $gutter $gutter;
+		overflow-y: auto;
+	}
+
+	.wp-block-navigation__responsive-container-content .wp-block-navigation__container {
+		width: 100%;
+		align-items: stretch;
+		gap: 0;
+	}
+
+	.wp-block-navigation__responsive-container-content .wp-block-navigation-item {
+		width: 100%;
+		margin: 0;
+		border-bottom: 1px solid var(--wp--preset--color--border);
+		animation: serif-menu-item-in 320ms ease-out both;
+
+		@for $i from 1 through 8 {
+			&:nth-child(#{$i}) {
+				animation-delay: 40ms * $i;
+			}
+		}
+	}
+
+	.wp-block-navigation__responsive-container-content .wp-block-navigation-item__content {
+		display: block;
+		width: 100%;
+		padding: 18px 0;
+		font-family: var(--wp--preset--font-family--ibm-plex-sans);
+		font-size: clamp(1.625rem, 7.5vw, 2.125rem);
+		font-weight: 600;
+		line-height: 1.15;
+		letter-spacing: -0.01em;
+		text-decoration: none;
+
+		&:hover,
+		&:focus-visible {
+			color: var(--wp--preset--color--primary);
+		}
+	}
+
+	// Submenus: indent, smaller.
+	.wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-container {
+		padding: 0 0 8px $gutter;
+
+		.wp-block-navigation-item {
+			border: 0;
+			animation: none;
+		}
+
+		.wp-block-navigation-item__content {
+			padding: 8px 0;
+			font-size: var(--wp--preset--font-size--large);
+			font-weight: 400;
+		}
+	}
+
+	// Footer: search + tagline.
+	.serif-menu__footer {
+		display: block;
+		margin-top: auto;
+		padding-top: 32px;
+
+		.wp-block-search__inside-wrapper {
+			border: 1px solid var(--wp--preset--color--muted);
+			border-radius: 4px;
+			overflow: hidden;
+		}
+
+		.wp-block-search__input {
+			border: 0;
+			border-radius: 0;
+			font-size: var(--wp--preset--font-size--medium);
+		}
+
+		.wp-block-search__button {
+			display: grid;
+			place-items: center;
+			min-width: 44px;
+			margin: 0;
+			padding: 0 8px;
+			border: 0;
+			border-radius: 0;
+		}
+	}
+
+	.serif-menu__tagline {
+		margin: 16px 0 0;
+		font-family: var(--wp--preset--font-family--ibm-plex-sans);
+		font-size: var(--wp--preset--font-size--small);
+		color: var(--wp--preset--color--muted);
+	}
+}
+
+@keyframes serif-menu-item-in {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
+
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+// --- Desktop header search trigger ------------------------------------------
+// With JS, clicking opens the search overlay (components/_search.scss).
+// Without JS, core's button-only mode expands an inline field.
+// Below 600px the Navigation overlay carries search, so hide this one.
+
+.serif-header__search {
+	@media (max-width: 599px) {
+		display: none;
+	}
+
+	.wp-block-search__inside-wrapper {
+		align-items: center;
+	}
+
+	.wp-block-search__button {
+		display: grid;
+		place-items: center;
+		width: 44px;
+		height: 44px;
+		margin: 0;
+		padding: 0;
+		color: var(--wp--preset--color--foreground);
+		background: none;
+		border: 0;
+		cursor: pointer;
+
+		&:hover,
+		&:focus-visible {
+			color: var(--wp--preset--color--primary);
+		}
+	}
+
+	// No-JS fallback field.
+	.wp-block-search__inside-wrapper:focus-within {
+		outline: var(--serif-focus-ring);
+		outline-offset: 2px;
+	}
+
+	.wp-block-search__input {
+		width: 200px;
+		border: 0;
+		border-radius: 0;
+		background: transparent;
+		font-size: var(--wp--preset--font-size--small);
+
+		&:focus-visible {
+			outline: none;
+		}
+	}
+
+	&.wp-block-search__button-only:not(.wp-block-search__searchfield-hidden) .wp-block-search__inside-wrapper {
+		border: 1px solid var(--wp--preset--color--muted);
+		border-radius: 4px;
+		background: var(--wp--preset--color--background);
+	}
+}
+
+// Keep the hamburger and search icon on one row at all sizes.
+.serif-header__actions {
+	align-items: center;
+}

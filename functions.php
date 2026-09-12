@@ -21,20 +21,14 @@ require_once SERIF_THEME_DIR . '/inc/setup.php';
 require_once SERIF_THEME_DIR . '/inc/scripts.php';
 require_once SERIF_THEME_DIR . '/inc/block-styles.php';
 require_once SERIF_THEME_DIR . '/inc/block-patterns.php';
-require_once SERIF_THEME_DIR . '/inc/template-tags.php';
+require_once SERIF_THEME_DIR . '/inc/block-filters.php';
+require_once SERIF_THEME_DIR . '/inc/search.php';
 
-// Load integration files.
-if ( defined( 'WPSEO_VERSION' ) ) {
+// Load integration files (only when the plugin is active and the file exists).
+if ( defined( 'WPSEO_VERSION' ) && file_exists( SERIF_THEME_DIR . '/inc/integrations/yoast.php' ) ) {
 	require_once SERIF_THEME_DIR . '/inc/integrations/yoast.php';
 }
 
-if ( defined( 'RANK_MATH_VERSION' ) ) {
+if ( defined( 'RANK_MATH_VERSION' ) && file_exists( SERIF_THEME_DIR . '/inc/integrations/rankmath.php' ) ) {
 	require_once SERIF_THEME_DIR . '/inc/integrations/rankmath.php';
-}
-
-/**
- * Wrapper for Serif\setup().
- */
-function serif() {
-	return \Serif\setup();
 }
