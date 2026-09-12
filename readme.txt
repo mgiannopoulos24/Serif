@@ -4,7 +4,7 @@ Tags: blog, news, one-column, wide-blocks, block-styles, block-patterns, custom-
 Requires at least: 6.6
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -23,7 +23,14 @@ Serif is a full-site-editing theme built for reading. Everything is set in IBM P
 * **Breadcrumbs** – when Yoast SEO or Rank Math is active, their breadcrumbs are placed above post and page titles automatically and styled to match the theme.
 * **No CDN, no tracking** – fonts and icons are bundled; the only script is a 1.5 KB search-dialog helper.
 
-The companion plugin **Serif ReadTime & Font Control** adds a "minutes to read" block (inserted into the post meta row automatically) and a floating reading-controls widget (text size, line height, contrast). It is optional: https://github.com/mgiannopoulos24/Serif-ReadTime-Font-Control
+== Recommended plugin ==
+
+Serif works on its own, but it is designed together with **Serif ReadTime & Font Control**, which adds:
+
+* a "minutes to read" estimate, inserted into the post meta row automatically;
+* a floating reading-controls widget — text size, line height and contrast — that remembers each reader's choices in their browser.
+
+Get it at https://github.com/mgiannopoulos24/Serif-ReadTime-Font-Control . After activating Serif, an admin notice links to it; dismiss it once and it stays dismissed.
 
 == Installation ==
 
@@ -33,6 +40,10 @@ The companion plugin **Serif ReadTime & Font Control** adds a "minutes to read" 
 4. Optional: pick a style variation in Appearance → Editor → Styles.
 
 == Frequently Asked Questions ==
+
+= Do I need the companion plugin? =
+
+No. The theme is complete without it. The plugin adds reading time and reading controls; see "Recommended plugin" above.
 
 = Does the theme load anything from third parties? =
 
@@ -75,6 +86,9 @@ Source: https://github.com/Templarian/MaterialDesign
 The theme logo mark (assets/images/logo.png) and screenshot were created for this theme and are released under the GPL v3 or later.
 
 == Changelog ==
+
+= 1.0.1 =
+* Recommend the Serif ReadTime & Font Control plugin: dismissible admin notice and readme section.
 
 = 1.0.0 =
 * Initial release.

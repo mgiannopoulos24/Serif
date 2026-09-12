@@ -23,6 +23,7 @@ require_once SERIF_THEME_DIR . '/inc/block-styles.php';
 require_once SERIF_THEME_DIR . '/inc/block-patterns.php';
 require_once SERIF_THEME_DIR . '/inc/block-filters.php';
 require_once SERIF_THEME_DIR . '/inc/search.php';
+require_once SERIF_THEME_DIR . '/inc/recommended-plugin.php';
 
 // SEO integrations (breadcrumb placement). Only one is loaded so a site with
 // both plugins active never gets two breadcrumb trails; Yoast takes precedence.

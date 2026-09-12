@@ -87,6 +87,7 @@ serif/
 │   ├── block-patterns.php        # related-posts query filter (serif_related_posts_query_vars)
 │   ├── block-filters.php         # icon swaps; mobile-overlay brand row + search; search landmark names
 │   ├── search.php                # <dialog> search overlay markup
+│   ├── recommended-plugin.php    # dismissible admin notice for the companion plugin
 │   └── integrations/
 │       ├── breadcrumbs.php       # Block Hooks placement of the SEO plugin's breadcrumbs
 │       ├── yoast.php             # loaded only when Yoast SEO is active

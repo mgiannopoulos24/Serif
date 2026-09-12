@@ -1,6 +1,10 @@
 Serif — Changelog
 =================
 
+1.0.1 — 2026-09-12
+------------------
+* Recommend the Serif ReadTime & Font Control plugin (dismissible admin notice, readme section).
+
 1.0.0 — 2026-09-12
 ------------------
 * Initial release.

@@ -1,6 +1,6 @@
 # Serif — Build TODO
 
-## Status: P0 + P1 done, boots clean, theme.json is the design system. 1.0.0 tagged; CI green. Next: 1.0.1 (recommended-plugin notice). (`serif-child/` stays nested by decision; excluded from the bundle.)
+## Status: P0 + P1 done, boots clean, theme.json is the design system. 1.0.1 released (recommended-plugin notice). CI green. (`serif-child/` stays nested by decision; excluded from the bundle.)
 
 ---
 
@@ -369,9 +369,9 @@ Measured with Playwright (`scratchpad/perf.mjs`-style: resource timing, LCP/CLS 
 
 ---
 
-## 1.0.1 — planned
+## 1.0.1 — DONE 2026-09-12
 
-- [ ] Recommend the companion plugin: a dismissible admin notice on theme activation (and a "Recommended plugins" note in `readme.txt` / README) pointing to **Serif ReadTime & Font Control** — https://github.com/mgiannopoulos24/Serif-ReadTime-Font-Control. No TGM/auto-install (theme-check disallows); just the name, what it adds (reading time in the post meta row, reading controls), and the link.
+- [x] Recommend the companion plugin: a dismissible admin notice on theme activation (and a "Recommended plugins" note in `readme.txt` / README) pointing to **Serif ReadTime & Font Control** — https://github.com/mgiannopoulos24/Serif-ReadTime-Font-Control. No TGM/auto-install (theme-check disallows); just the name, what it adds (reading time in the post meta row, reading controls), and the link.
 
 ## Workflows (`.github/workflows/`)
 
@@ -423,6 +423,7 @@ serif/
 │   ├── block-patterns.php        # related-posts query filter (serif_related_posts_query_vars)
 │   ├── block-filters.php         # icon swaps; mobile-overlay brand row + search; search landmark names
 │   ├── search.php                # <dialog> search overlay markup
+│   ├── recommended-plugin.php    # dismissible admin notice for the companion plugin
 │   └── integrations/
 │       ├── breadcrumbs.php       # Block Hooks placement of the SEO plugin's breadcrumbs
 │       ├── yoast.php             # loaded only when Yoast SEO is active

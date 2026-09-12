@@ -1,18 +1,16 @@
-# Copyright (C) 2026 mgiannopoulos24
-# This file is distributed under the GNU General Public License v3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Serif Child 1.0.0\n"
+"Project-Id-Version: Serif 1.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/serif\n"
 "Last-Translator: Marios Giannopoulos\n"
 "Language-Team: Greek\n"
-"Language: el\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-09-12T14:43:21+00:00\n"
 "PO-Revision-Date: 2026-09-12 18:00+0300\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: serif\n"
 
@@ -41,7 +39,8 @@ msgstr ""
 msgid "https://github.com/mgiannopoulos24"
 msgstr ""
 
-#: blocks/breadcrumbs/render.php:12
+#: inc/integrations/rankmath.php:49
+#: inc/integrations/yoast.php:36
 msgid "Breadcrumbs"
 msgstr "Διαδρομή πλοήγησης"
 
@@ -50,7 +49,7 @@ msgid "Search the site"
 msgstr "Αναζήτηση στον ιστότοπο"
 
 #: inc/block-filters.php:80
-#: inc/search.php:25
+#: inc/search.php:24
 #: patterns/header.php:28
 #: patterns/no-search-results.php:18
 #: patterns/not-found.php:22
@@ -60,8 +59,8 @@ msgstr "Αναζήτηση…"
 
 #: inc/block-filters.php:80
 #: inc/block-filters.php:103
-#: inc/search.php:25
-#: inc/search.php:29
+#: inc/search.php:24
+#: inc/search.php:27
 #: patterns/header.php:28
 #: patterns/no-search-results.php:18
 #: patterns/not-found.php:22
@@ -115,16 +114,16 @@ msgstr "Serif: Πολυμέσα"
 
 #. translators: %s: site title.
 #: inc/search.php:23
-#: inc/search.php:35
+#: inc/search.php:33
 #, php-format
 msgid "Search %s"
 msgstr "Αναζήτηση στο %s"
 
-#: inc/search.php:38
+#: inc/search.php:36
 msgid "Close search"
 msgstr "Κλείσιμο αναζήτησης"
 
-#: inc/search.php:43
+#: inc/search.php:41
 msgid "Press Esc to close"
 msgstr "Πατήστε Esc για κλείσιμο"
 
@@ -315,31 +314,6 @@ msgstr "Τι βρήκαμε"
 msgid "Conclusion"
 msgstr "Συμπέρασμα"
 
-#: blocks/breadcrumbs/block.json
-msgctxt "block title"
-msgid "Breadcrumbs"
-msgstr "Διαδρομή πλοήγησης"
-
-#: blocks/breadcrumbs/block.json
-msgctxt "block description"
-msgid "Breadcrumb trail from Yoast SEO or Rank Math, styled by the theme."
-msgstr "Διαδρομή πλοήγησης από το Yoast SEO ή το Rank Math, με τη μορφοποίηση του θέματος."
-
-#: blocks/breadcrumbs/block.json
-msgctxt "block keyword"
-msgid "breadcrumbs"
-msgstr "διαδρομή πλοήγησης"
-
-#: blocks/breadcrumbs/block.json
-msgctxt "block keyword"
-msgid "navigation"
-msgstr "πλοήγηση"
-
-#: blocks/breadcrumbs/block.json
-msgctxt "block keyword"
-msgid "seo"
-msgstr "seo"
-
 #: theme.json
 #: styles/dark.json
 #: styles/high-contrast.json
@@ -525,3 +499,19 @@ msgstr "Υψηλή αντίθεση"
 msgctxt "Style variation name"
 msgid "Sepia"
 msgstr "Σέπια"
+
+#: inc/recommended-plugin.php:69
+msgid "Serif recommends the Serif ReadTime & Font Control plugin."
+msgstr "Το Serif προτείνει το πρόσθετο Serif ReadTime & Font Control."
+
+#: inc/recommended-plugin.php:70
+msgid "It adds a “minutes to read” estimate to the post meta row and a floating reading-controls widget (text size, line height, contrast) that remembers each reader’s choices."
+msgstr "Προσθέτει μια εκτίμηση «λεπτών ανάγνωσης» στη γραμμή στοιχείων του άρθρου και ένα αιωρούμενο γραφικό στοιχείο ελέγχου ανάγνωσης (μέγεθος κειμένου, διάστιχο, αντίθεση) που θυμάται τις επιλογές κάθε αναγνώστη."
+
+#: inc/recommended-plugin.php:72
+msgid "Get the plugin"
+msgstr "Λήψη του πρόσθετου"
+
+#: inc/recommended-plugin.php:74
+msgid "Dismiss"
+msgstr "Απόρριψη"
