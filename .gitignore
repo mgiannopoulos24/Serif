@@ -12,3 +12,5 @@ tests/**/.auth
 
 # Plugins
 plugins/
+# Local wp-env overrides
+.wp-env.override.json
