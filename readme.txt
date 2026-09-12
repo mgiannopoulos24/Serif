@@ -4,7 +4,7 @@ Tags: blog, news, one-column, wide-blocks, block-styles, block-patterns, custom-
 Requires at least: 6.6
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -86,6 +86,9 @@ Source: https://github.com/Templarian/MaterialDesign
 The theme logo mark (assets/images/logo.png) and screenshot were created for this theme and are released under the GPL v3 or later.
 
 == Changelog ==
+
+= 1.0.2 =
+* Fix: hero tagline and hero-cover pattern text were unreadable (black on black) in the High Contrast variation — they now use the constant white preset.
 
 = 1.0.1 =
 * Recommend the Serif ReadTime & Font Control plugin: dismissible admin notice and readme section.

@@ -1,6 +1,10 @@
 Serif — Changelog
 =================
 
+1.0.2 — 2026-09-12
+------------------
+* Fix: hero text unreadable in the High Contrast variation (used the light preset, which is black there; now white).
+
 1.0.1 — 2026-09-12
 ------------------
 * Recommend the Serif ReadTime & Font Control plugin (dismissible admin notice, readme section).
