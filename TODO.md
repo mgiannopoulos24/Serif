@@ -1,6 +1,6 @@
 # Serif — Build TODO
 
-## Status: P0 + P1 done, boots clean, theme.json is the design system. Next: first commit + tag 1.0.0. (`serif-child/` stays nested by decision; excluded from the bundle.)
+## Status: P0 + P1 done, boots clean, theme.json is the design system. 1.0.0 tagged; CI green. Next: 1.0.1 (recommended-plugin notice). (`serif-child/` stays nested by decision; excluded from the bundle.)
 
 ---
 
@@ -368,6 +368,10 @@ Measured with Playwright (`scratchpad/perf.mjs`-style: resource timing, LCP/CLS 
 - Note: `.gitignore` ignores `CHANGELOG*` (uppercase). The lowercase files are tracked on Linux; on a case-insensitive filesystem they would be ignored — consider removing that line.
 
 ---
+
+## 1.0.1 — planned
+
+- [ ] Recommend the companion plugin: a dismissible admin notice on theme activation (and a "Recommended plugins" note in `readme.txt` / README) pointing to **Serif ReadTime & Font Control** — https://github.com/mgiannopoulos24/Serif-ReadTime-Font-Control. No TGM/auto-install (theme-check disallows); just the name, what it adds (reading time in the post meta row, reading controls), and the link.
 
 ## Workflows (`.github/workflows/`)
 
