@@ -1,6 +1,6 @@
 # Serif — Build TODO
 
-## Status: P0 + P1 done, boots clean, theme.json is the design system. 1.0.1 released (recommended-plugin notice). CI green. (`serif-child/` stays nested by decision; excluded from the bundle.)
+## Status: P0 + P1 done, boots clean, theme.json is the design system. 1.0.2 released. CI green. (`serif-child/` stays nested by decision; excluded from the bundle.)
 
 ---
 
@@ -372,6 +372,10 @@ Measured with Playwright (`scratchpad/perf.mjs`-style: resource timing, LCP/CLS 
 ## 1.0.1 — DONE 2026-09-12
 
 - [x] Recommend the companion plugin: a dismissible admin notice on theme activation (and a "Recommended plugins" note in `readme.txt` / README) pointing to **Serif ReadTime & Font Control** — https://github.com/mgiannopoulos24/Serif-ReadTime-Font-Control. No TGM/auto-install (theme-check disallows); just the name, what it adds (reading time in the post meta row, reading controls), and the link.
+
+## 1.0.2 — DONE 2026-09-12
+
+- [x] High Contrast: hero tagline / Hero Cover text used `light` (black in that variation) → `white`. Rule going forward: text over the cover overlay always uses `white`; `light` is a surface colour.
 
 ## Workflows (`.github/workflows/`)
 
