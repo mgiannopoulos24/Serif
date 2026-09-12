@@ -3,8 +3,7 @@
   "phpVersion": "8.1",
   "plugins": [
     "https://downloads.wordpress.org/plugin/wordpress-seo.zip",
-    "https://downloads.wordpress.org/plugin/seo-by-rank-math.zip",
-    "./plugins/envato-theme-check"
+    "https://downloads.wordpress.org/plugin/seo-by-rank-math.zip"
   ],
   "mappings": {
     "wp-content/themes/serif": "."

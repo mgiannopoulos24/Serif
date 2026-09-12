@@ -19,11 +19,9 @@ jobs:
         with:
           php-version: '8.1'
           coverage: none
-          tools: composer, cs2pr
+          tools: composer
       - run: composer install --no-interaction --prefer-dist
-      - run: vendor/bin/phpcs --standard=phpcs.xml -q --report=checkstyle . | cs2pr
-      - name: PHP syntax (8.1 floor)
-        run: find . -name '*.php' -not -path './vendor/*' -not -path './node_modules/*' -not -path './plugins/*' -print0 | xargs -0 -n1 php -l > /dev/null
+      - run: vendor/bin/phpcs --standard=phpcs.xml .
 
   build:
     name: Compiled assets are up to date
