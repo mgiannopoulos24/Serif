@@ -21,7 +21,7 @@ jobs:
           coverage: none
           tools: composer, cs2pr
       - run: composer install --no-interaction --prefer-dist
-      - run: vendor/bin/phpcs --standard=phpcs.xml --report=checkstyle . | cs2pr
+      - run: vendor/bin/phpcs --standard=phpcs.xml -q --report=checkstyle . | cs2pr
       - name: PHP syntax (8.1 floor)
         run: find . -name '*.php' -not -path './vendor/*' -not -path './node_modules/*' -not -path './plugins/*' -print0 | xargs -0 -n1 php -l > /dev/null
 

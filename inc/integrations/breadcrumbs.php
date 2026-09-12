@@ -41,9 +41,9 @@ function hook_before_title( $block_name ) {
 /**
  * Whether a hooked-block callback is for our before-title placement.
  *
- * @param string                                $relative_position   before|after|first_child|last_child.
- * @param array|null                            $parsed_anchor_block The anchor block.
- * @param \WP_Block_Template|\WP_Post|array     $context             Template, part, pattern or post.
+ * @param string                            $relative_position   before|after|first_child|last_child.
+ * @param array|null                        $parsed_anchor_block The anchor block.
+ * @param \WP_Block_Template|\WP_Post|array $context             Template, part, pattern or post.
  * @return bool
  */
 function is_before_title_hook( $relative_position, $parsed_anchor_block, $context ) {
