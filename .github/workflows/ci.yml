@@ -58,17 +58,6 @@ jobs:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ hashFiles('bun.lock') }}
       - run: bunx playwright install --with-deps chromium
-      - name: Drop local-only plugins from the wp-env config
-        # .wp-env.json mounts ./plugins/envato-theme-check, which is gitignored.
-        run: |
-          cat > .wp-env.override.json <<'EOF'
-          {
-            "plugins": [
-              "https://downloads.wordpress.org/plugin/wordpress-seo.zip",
-              "https://downloads.wordpress.org/plugin/seo-by-rank-math.zip"
-            ]
-          }
-          EOF
       - name: Start WordPress (wp-env) and seed content
         run: bun run start
       - name: Skip Rank Math's setup gate so its front end renders

@@ -24,11 +24,10 @@ require_once SERIF_THEME_DIR . '/inc/block-patterns.php';
 require_once SERIF_THEME_DIR . '/inc/block-filters.php';
 require_once SERIF_THEME_DIR . '/inc/search.php';
 
-// Load integration files (only when the plugin is active and the file exists).
-if ( defined( 'WPSEO_VERSION' ) && file_exists( SERIF_THEME_DIR . '/inc/integrations/yoast.php' ) ) {
+// SEO integrations (breadcrumb placement). Only one is loaded so a site with
+// both plugins active never gets two breadcrumb trails; Yoast takes precedence.
+if ( defined( 'WPSEO_VERSION' ) ) {
 	require_once SERIF_THEME_DIR . '/inc/integrations/yoast.php';
-}
-
-if ( defined( 'RANK_MATH_VERSION' ) && file_exists( SERIF_THEME_DIR . '/inc/integrations/rankmath.php' ) ) {
+} elseif ( defined( 'RANK_MATH_VERSION' ) ) {
 	require_once SERIF_THEME_DIR . '/inc/integrations/rankmath.php';
 }
