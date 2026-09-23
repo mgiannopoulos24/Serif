@@ -1,6 +1,10 @@
 Serif — Changelog
 =================
 
+1.0.3 — 2026-09-23
+------------------
+* Tested with WordPress 7.1.2.
+
 1.0.2 — 2026-09-12
 ------------------
 * Fix: hero text unreadable in the High Contrast variation (used the light preset, which is black there; now white).

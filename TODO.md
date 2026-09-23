@@ -1,6 +1,6 @@
 # Serif — Build TODO
 
-## Status: P0 + P1 done, boots clean, theme.json is the design system. 1.0.2 released. CI green. (`serif-child/` stays nested by decision; excluded from the bundle.)
+## Status: P0 + P1 done, boots clean, theme.json is the design system. 1.0.3 released. CI green. (`serif-child/` stays nested by decision; excluded from the bundle.)
 
 ---
 
@@ -376,6 +376,10 @@ Measured with Playwright (`scratchpad/perf.mjs`-style: resource timing, LCP/CLS 
 ## 1.0.2 — DONE 2026-09-12
 
 - [x] High Contrast: hero tagline / Hero Cover text used `light` (black in that variation) → `white`. Rule going forward: text over the cover overlay always uses `white`; `light` is a surface colour.
+
+## 1.0.3 — DONE 2026-09-23
+
+- [x] Tested with WordPress 7.1.2 (`Tested up to: 7.1` already covers it — WP.org reads major.minor).
 
 ## Workflows (`.github/workflows/`)
 
